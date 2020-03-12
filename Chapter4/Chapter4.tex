@@ -1,0 +1,69 @@
+% Chapter 3.
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\subsection{How it affects the model}
+We will consider having a Gamma ISI throughout, although the same concept has been used for Poisson, inverse Gaussian and Weibull. Previously, without the inclusion of $T_{\mathrm{min}}$ we have the following ISI distribution.  
+
+ \begin{equation}
+p(y_i,y_{i-1}|x) = \frac{\gamma x(y_i)}{\Gamma (\gamma)} \big[ \gamma X(y_{i-1},y_i) \big]^{\gamma - 1} \mathrm{e}^{-\gamma X(y_{i-1},y_i) },
+\end{equation}
+ where
+ \begin{equation}
+X(s,t) = \int^{t}_{s} x(u) du , \qquad \text{for any } s,t \in [0,T],
+\end{equation}
+where $\gamma > 0 $ is the ISI parameter and $\Gamma$ is the Gamma function.\\
+ 
+ Now with the inclusion of $T_{\mathrm{min}}$ the ISI distribution changes to 
+  \begin{equation}
+p(y_i,y_{i-1}|x) =
+\begin{cases}
+0  & \text{ if } y_i-y_{i-1}<  T_{\mathrm{min}} \\
+ \frac{\gamma x(y_i)}{\Gamma (\gamma)} \big[ \gamma X(y_{i-1},y_i) \big]^{\gamma - 1} \mathrm{e}^{-\gamma X(y_{i-1},y_i) } & \text{o/w}\\
+ \end{cases}
+\end{equation}
+
+However, we can rewite this equation and alter the definition of $X$ to account for the refractory period. Thus,
+\begin{equation}
+p(y_i,y_{i-1}|x) = \frac{\gamma x(y_i)}{\Gamma (\gamma)} \big[ \gamma \tilde X(y_{i-1},y_i) \big]^{\gamma - 1} \mathrm{e}^{-\gamma \tilde X(y_{i-1},y_i) },
+\end{equation}
+ where
+ \begin{equation}
+\tilde X(s,t) = \int^{t}_{s+T_{\mathrm{min}}} x(u) du , \qquad \text{for any } s,t \in [0,T],
+\end{equation}
+
+Next we want to calculate the likelihood for an entire spike sequence. In general we have: 
+\begin{equation}
+p(\mathbf{y} |x) = p_1(y_1|x) p_T(T,y_N|x) \prod^N_{i=2} p(y_i, y_{i-1}|x).
+\end{equation} 
+
+Above we have dealt with the ISI distribution, however we need to decide how $T_{\mathrm{min}}$ affects $p_1$ and $p_T$. We assume that $T_{\mathrm{min}}$ has no effect on $p_1$, since we do not know the time of the last spike before the initial spike. Hence, the refractory period may already of occurred.
+Thus, 
+\begin{equation}
+p_1(y_1|x) = x(y_1)e^{-X(0,y_1)}  
+\end{equation}
+
+$T_{\mathrm{min}}$ however does effect $p_T$. If the time difference between the last spike and end time is less then the refractory period then $p_T$ can be disregarded as it has no effect on the likelihood. If the difference is longer then the refractory period then we have 
+\begin{equation}
+p_T(T,y_N|x) = e^{-\tilde X(y_N,T)}, 
+\end{equation}
+
+Thus when calculating the likelihood for $x$ we do not need to change the formula, we only need to change our calculation of $X$ by including $T_{\mathrm{min}}$ to the bottom of the integrand. However we will need to distinguish the case whether to include a term for $p_T$ or not. 
+
+\subsection{Estimating $T_{\mathrm{min}}$}
+We estimate $T_{\mathrm{min}}$ using MCMC, where if we are estimating other parameters ($x(t)$/ISI parameters) we use Gibbs sampling and sample from $T_{\mathrm{min}}$ separately.  
+
+$T_{\mathrm{min}}$ only affects the likelihood via $X(y_{i-1},y_i)$ hence we get the
+marginal for each ISI distribution reduces to : \\
+
+
+\begin{tabular}{ll}
+Distribution & log marginal \\ \hline
+Poisson & $-X(y_{i-1},y_i)$ \\
+Gamma & $(\gamma - 1) \log X(y_{i-1},y_i) - \gamma X(y_{i-1},y_i)$ \\
+Inverse Gaussian & 1 \\ 
+Log Normal & 1 \\
+Weibull  & \\
+\end{tabular} 
+
+\end{document}

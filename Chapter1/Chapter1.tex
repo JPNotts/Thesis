@@ -1,0 +1,147 @@
+% Introduction
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+%\/* Format of this section.
+% - Calcium in biology.
+% 
+% - Calcium Signalling
+% 	- Example of processes that use calcium signalling
+%	- Cell level picture of what causes Ca spikes (oscillations)
+%	- Ca events (blips, puffs, waves)
+%	- Encoding / Decoding Ca patterns
+%
+% - Calcium Signalling models
+% 	- Deterministic models
+%	- Stochastic Models
+%	- Modelling Issues
+%	
+% - Overview and project Goals
+% 	
+%Add some reasoning as to why we want to do data-driven modelling	  		
+%*/
+%---------------------------------------------------------
+Calcium (\ce{Ca^2+}) is the alkaline earth metal, first discovered by Sir Humphry Davy in 1908 by electrolysis of its oxide. \cite{Davy_1908}, the name `Calcium' is derived from the latin calx meaning lime as it was extracted by heating limestone.
+
+ \ce{Ca^2+} is needed for the normal function of cells and their survival. The importance of \ce{Ca^2+} in animal cells was discovered by accident in 1883 by Sidney Ringer \cite{Ringer_1883}, predating its first isolation. In 1882, Ringer investigated the affects of sodium and potassium had on the contractions of isolated frog hearts, and found that the compounds effected the heart beating. \cite{Ringer_1882} However, he discovered that the laboratory ran out of distilled water during the experiment and a technician had used pipe water instead. Hence, he repeated the experiment using distilled water but found the results differed from the original experiment, and he hypothesised the observed effects were ``due to the inorganic constituents of the pipe water'' \cite{Ringer_1883}. That constituent was \ce{Ca^2+}.       
+ 
+ In the years since that discovery, it is known that in addition to influencing the heart beat, \ce{Ca^2+} has 4 main biological roles \cite{}:
+ \begin{itemize}
+ \item cofactor for enzymes or proteins,
+ %% What is a cofactor. 
+ %% A cofactor is chemical compound or metallic ion (such as Ca) that is required for an enzymes activity as a catalyst. I.e a component that helps catalyse a certain reaction. For example Mg^2+ is a cofactor for DNA-polymerase used in duplicating DNA by using its positive charge to stabilise the negatively charged DNA. Other examples  Zn^2+ for carbonic anhydrase and alcohol dehydrogenase. Ca is usually not used as a cofactor in the above way but is a special case. 
+ %% I.e. wiki has ``Calcium is another special case, in that it is required as a component of the human diet, and it is needed for the full activity of many enzymes, such as nitric oxide synthase, protein phosphatases, and adenylate kinase, but calcium activates these enzymes in allosteric regulation, often binding to these enzymes in a complex with calmodulin.[15] Calcium is, therefore, a cell signaling molecule, and not usually considered a cofactor of the enzymes it regulates.[16]'' Where the references are  [15] Clapham DE (2007). "Calcium signaling". Cell. 131 (6): 1047?58. doi:10.1016/j.cell.2007.11.028. PMID 18083096. AND [16] Niki I, Yokokura H, Sudo T, Kato M, Hidaka H (October 1996). "\ce{Ca^2+} signaling and intracellular \ce{Ca^2+} binding proteins". Journal of Biochemistry. 120 (4): 685?98. 
+ \item electrical (i.e. in the formation of action potentials in excitable cells),
+ \item intracellular second messenger
+ \item structural (i.e. in skeletal structures such as bones or shells).
+ % Pretty self explanatory.
+ \end{itemize} 
+ 
+ In this thesis we consider  \ce{Ca^2+}'s role as an intracellular second messenger, or to be more precise we investigate how changes to the  \ce{Ca^2+}  concentration inside a cell informs us of the applied stimulation. We begin by introducing intracellular \ce{Ca^2+}  signalling, before reviewing the literature of what mathematical models have been used to analyse the signals. Finally, we introduce the goals of our project. 
+ 
+ \subsection{Calcium Signalling}
+ In its simplest form cells at rest have a \ce{Ca^2+} concentration of $100nM$ but activates when the level rises to $\sim 1 \mu M$. This elevation of \ce{Ca^2+} can regulate many processes due to its versatility, i.e. speed, amplitude and spatio-temporal patterning.    
+
+ Calcium takes part in a variety of biological functions such as
+ cell maturation, \cite{Tosti_2006},
+ %chemotaxis \cite{Fay_1995}
+ %and gene expression \cite{Haasteren_1999}.
+ steering bacterial infection \cite{VanNhieu_2003} and 
+ orchestrating fertilisation \cite{Santella_2004,Whitaker_2006,Denninger_2014}.
+ Along with these functions excessive \ce{Ca^2+} can damage cells and even cause apoptosis \cite{Mattson_2003, Orrenius_2003}.
+ 
+ The overarching idea of the \ce{Ca^2+} signalling network can be split into 4 compartments: 
+ \begin{enumerate}
+ \item Signalling is triggered by a stimulus that generates various \ce{Ca^2+}-mobilising signals.
+ \item The \ce{Ca^2+}-mobilising signals activate the ON mechanism that feeds \ce{Ca^2+} into the cytoplasm
+ \item \ce{Ca^2+} functions as a messenger to simulate numerous \ce{Ca^2+}-sensitive processes.
+ \item The OFF mechanism, composed of pumps and exchangers, remove \ce{Ca^2+} from the cytoplasm to restore the resting state. 
+ \end{enumerate}
+ 
+ We will illustrate the process by considering Human embryonic kidney (HEK) cells exposed to the stimulant Carbohol, which induces \ce{Ca^2+} oscillations driven by \ce{Ca^2+} release through the endoplasmic reticulum (ER) through inositol-1,4,5-triphosphate (\ce{InsP_3}) receptors (\ce{InsP_3R}), see figure --. 
+ 
+ Carbohol acts as an agonist of the muscarinic \ce{M_3} receptor in the extracellular medium, which itself is coupled with a G-protein which induces the activation of Phospholipase C (PLC). The increase of PLC causes subsequent prodicution of \ce{IP_3} (and diacyl-glycerol DAG), via the hydrolysis of PLC and phosphatidylinositol 4,5-bisphosphate (PIP2). Therefore Carbohol has caused the activation of \ce{IP_3}, a \ce{Ca^2+}-mobilising signal. 
+ 
+\ce{IP_3} then diffuses into the cell across the cell membrane, and binds to \ce{IP_3R}s situated on the ER. The ER is a compartment inside the cell that stores \ce{Ca^2+}, on its membrane \ce{IP_3R} are positioned in clusters with 5-30 \ce{IP_3R} channels per cluster. \cite{Swillens_1999}.
+
+Describe the structure of \ce{IP_3R}. The \ce{IP_3R} opens in response to \ce{IP_3} and \ce{Ca^2+} binding to activation sites. The activated channels release large amount of \ce{Ca^2+} into the cytoplasm. 
+
+Some of the released \ce{Ca^2+} binds to a receptors inactivation site which closes the channel. The channel cannot reopen for some time after inactivation (the channel is in a refractory state) \cite{Sneyd_2005, Lodish_1995}. After \ce{IP_3R} closure cystolic \ce{Ca^2+} is removed through plasma membrane ATPase (PCMA) and sarco-plasmic reticulum \ce{Ca^2+}ATPase (SERCA) pumps out of the cell and into the ER respectively \cite{Berridge_2007}. % Plus another reference please. 
+Cytosolic \ce{Ca^2+} is also controlled by buffers - compounds that bind free \ce{Ca^2+} such as ATP and calretinin - hence allowing \ce{Ca^2+} concentration to remain in an operational range. Since \ce{Ca^2+} is cytotoxic. The intracellular \ce{Ca^2+} buffering capacity depends on the type of cell \cite{Fewtrell_1993, Berridge_2003, Gilabert_2012}
+
+Repeated increases and decreases in \ce{Ca^2+} caused by the opening/closing of \ce{IP_3R} along with \ce{Ca^2+} pump activity creates \ce{Ca^2+} oscillations. Depending on the cell type the period of oscillations varies from seconds to minutes, i.e. 10ms spike duration in toadfish swimbladder muscle or 1 day  for circadian rhythms \cite{Evans_2001, Boulware_2008} and oscillations range from regular spiking to bursting \cite{Dupont_2003}.
+
+%Maybe add examples of other pathways (e.g RyR)/ 
+
+Changes in cytosolic \ce{Ca^2+} concentration generally doesn't occur uniformly across the cell, rather local \ce{Ca^2+} changes can create 
+\ce{Ca^2+} events are often categorised into 3 groups: blips, puffs and waves. A Blip occurs when \ce{Ca^2+} is released from a single receptor, whereas a puff arises when a cluster of receptors is activated. \ce{Ca^2+} can diffuse from one puff site to surrounding clusters activating the receptors and causing wave propagation. In astocytes at least three puff sites need to be activated synchronously to cause a wave \cite{Croft_2016}. Intracellular \ce{Ca^2+} waves spread throughout the cell and can transfer information from one part of the cell to another.  
+
+% Figure of blip/puffs/waves.
+
+\subsubsection{Encoding and decoding \ce{Ca^2+} Patterns}
+Cells use spatio-temporal patterns to transmit information (both within the same cell and to surrounding cells) \cite{Petersen_1991,  Dolmetsch_1998, Politi_2006} and consequently to initiate an appropriate physiological response. \cite{Uhlen_2010, Berridge_1998}. However, it is not yet fully understood how encoding and decoding mechanisms convey information. To date, it has been shown that \ce{Ca^2+} responses can vary amongst different cell types \cite{Berridge_1988}, and even in the same cell type \cite{Rooney_1989}. Along with cell type, the agonist type \cite{Rooney_1989, Cornell-Bell_1990, Larsen_2004} and its concentration \cite{Berridge_1988} also affects \ce{Ca^2+} response. 
+
+The relationship between \ce{Ca^2+} oscillations and agonist was first studied in 1986 by Woods et al. \cite{Woods_1986} They found that \ce{Ca^2+} oscillations depended on the hormone concentration used for simulation in single, isolated rat hepatocyte cells. From this, they hypothesised that only the frequency of \ce{Ca^2+} oscillations were effected by the agonist and both amplitude and width of the oscillations were unaffected, which was confirmed in 1987 \cite{Woods_1987}. 
+% bit about human cells relationship \cite{Jacob_1988}
+
+% Add an example of amplitude modulation? i.e 
+
+Two hypothesis' for stimulus encoding followed from the fixed agonist experiments. Namely, amplitude and frequency modulation (AM and FM \cite{Berridge_1997}. AM proposes that the concentration of agonist increases the amplitude of \ce{Ca^2+} signals, whereas FM claims that the frequency of the \ce{Ca^2+} signals increase with the stimulus strength. Recent studies have shown that \ce{Ca^2+} spike times scales exponentially with the stimulus strength for FM \cite{Thurley_2014}.
+
+%Section on how experimentalists generate spike sequences.
+\subsection{How do we generate spike sequences?}
+The aim of our work is to fit statistic models to real spike data. However, before any model fitting it is best to understand how we get spike data from individual cells. 
+
+
+\subsection{Calcium Signalling Models}
+Calcium signalling is often modelled using either deterministic or stochastic models. In this section we provide a short overview of these models. For a more detailed view, we refer readers to \cite{Sneyd_2005, Falcke_2004, Dupont_2011, Thul_2008, Dupont_2016}. 
+
+\subsubsection{\ce{Ca^2+} oscillation modelling}
+%Need something to say considering only \ce{IP_3} pathway (i.e. not RyR)
+We have shown that cytosolic \ce{Ca^2+} concentration, $c(t))$ is controlled through \ce{IP_3R} and SERCA/PMCA pumps. \ce{IP_3R} controls \ce{Ca^2+} release from the ER into the cytoplasm ($J_{\ce{IP_3R}}$). Whereas SERCA/PMCA pumps transport \ce{Ca^2+} from the cytoplasm back into the ER ($J_{SERCA}$) and outside the cell ($J_{PMCA}$) respectively. Combining the fluxes, we can mathematically describe the \ce{Ca^2+} concentration by 
+\begin{equation}
+\frac{dc}{dt} =  J_{\ce{IP_3R}} - J_{SERCA} - J_{PMCA}.
+\end{equation}
+We could include more terms such as the flux into the cytoplasm from RyR, or leak from the internal stores into the cytosol. One of the first realistic models for \ce{Ca^2+} oscillations was produced by De Young and Keizer (DYK) in 1992 \cite{DeYoung_1992}. The model became an archetype for more recent deterministic \cite{Li_1994, Atri_1993, Tang_1996} and stochastic models \cite{Falcke_2000, Falcke_2003}.
+
+The DYK model considers only two fluxes, one into the cytosol via the \ce{IP_3R} channels and a leak from the internal store, and one out of the cytosol via a ATP-dependent pump (i.e. the SERCA pump). The SERCA pump is described by the Hill function of $c(t)$
+\begin{equation}
+J_{SERCA} = \frac{vc^2}{k^2 + c^2},
+\end{equation}
+where parameters $v,k$ represent maximum \ce{Ca^2+} uptake and pump activation constant respectively \cite{DeYoung_1992}.
+
+Recall that studies have found that the \ce{IP_3R} is activated when at least 3 of the 4 subunits are activated. Thus the DYK model assumes that an \ce{IP_3R} consists of 3 identical independent subunits. Each subunit contains one \ce{IP_3R} binding site, one \ce{Ca^2+} activation site and one \ce{Ca^2+} inhibition site. As such each subunit can be in one of 8 states (figure -- ), which can be specified by the binary triplet ${ijk} \in \{0,1 \}^3$, where the indexes correspond to the \ce{IP_3R} site, \ce{Ca^2+} activation site, \ce{Ca^2+} inhibition site in order. An index of 0 means the site is unbound whereas 1 represents the site been bound. A subunit is activated when it is in state ${110}$ i.e. the \ce{IP_3R} site and \ce{Ca^2+} activation site is bound and the \ce{Ca^2+} Inhibition site is unbound. Hence the the channel is open when all 3 subunits are activated. The probability that the subunit is in state $ijk$ is denoted by $x_{ijk}$.
+By applying mass-action kinetics we retrieve eight ODEs for each subunit state, for example
+\begin{equation}
+\frac{d x_{000}}{dt} =b_1x_{100} + b_5x_{010} + b_4x_{001} -x_{000}\left(a_1I + a_4c  +a_5c \right). 
+\end{equation} 
+
+However, since we must be in one of the 8 states we can replace one of the ODEs with the condition $\sum x_{ijk} = 1$. \ce{IP_3} concentration can be fixed, however for more realistic results it is possible to include it's own dynamics, e.g \cite{DeYoung_1992, Cuthbertson_1991, Chay_1995,Kummer_2005}.
+
+Thus, with the \ce{IP_3R} subunit open probability of $x_{110}$, the outward flux of the DYK model can be computed by
+\begin{equation}
+J_{\mathrm{\ce{IP_3R}}} = c_1 \left( v_1 x_{110}^3 +v_2 \right) \left(c_{\mathrm{er}} - c \right),
+\end{equation}
+where the parameters $c_1, c_{\mathrm{er}}, v_1$ and $v_2$ correspond to the ratio of ER to the cytosolic volume, \ce{Ca^2+} concentration in the ER, maximal \ce{Ca^2+} influx and \ce{Ca^2+} leak respectively. 
+ %Figure rastor and PSTH. 
+%  \begin{figure}[t]
+%   \hrulefill
+%   \begin{center} 
+%    \includegraphics[scale = 0.75]{DYK_Dynamics} 
+%    \end{center}     
+%    \caption{Transition scheme of the \ce{IP_3R} subunit in the DYK model. Where the red circle denotes the the \ce{IP_3R} activation site. $I$ and $c$ correspond to the concentration of \ce{IP_3} and \ce{Ca^2+} respectively. $a_i$ and $b_i$ $i=1,\dots,5$ are the binding and dissociation constants. }
+%     \label{fig:DYK}
+%    \hrulefill
+%    \end{figure}
+    
+    
+    
+\subsubsection{\ce{Ca^2+} waves}
+Whilst the DYK improved understanding of \ce{Ca^2+} signalling toolbox, it only considers temporal changes in the cytosolic \ce{Ca^2+} concentration. It is know (see figure -- ) that \ce{Ca^2+} patterns vary in both time and space. To incorporate this into \eqref{} a diffusion term is added
+\begin{equation}
+\frac{\partial c}{\partial t} = D_c\frac{\partial^2 c}{\partial x^2}
+\end{equation}
+
+\subsubsection{Stochastic Models}
+   
+\end{document}

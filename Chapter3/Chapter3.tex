@@ -1,0 +1,283 @@
+% Chapter 2
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+%% This part is describing the non-identifability of the ISI distribution choices.
+\section{ISI Distribution}
+%GAMMA
+\subsection{Gamma distribution}
+Throughout we have assumed that the Gamma ISI distribution is as follows 
+\begin{equation}
+ p(y_i, y_{i-1}) =  \frac{\gamma x(y_i)}{\Gamma ( \gamma )} \big[ \gamma X(y_{i-1} , y_i ) \big]^{\gamma -1} \exp( - \gamma X(y_{i-1} , y_i )  ).
+ \end{equation}
+ 
+ Which one can see a generalisation of a Gamma$(\gamma,\gamma)$. We have used this distribution because it was used in \cite{}. However, can we generalise further and consider a Gamma$(\alpha,\beta)$ ISI distribution? The answer is no. This is because the parameters $x$ and $\beta$ are non-identifiable.  \\
+ 
+{\color{blue}
+Suppose our ISI interval is given by the following $(\alpha, \beta )$ Gamma distribution. 
+
+\begin{equation}
+ p(y_i, y_{i-1}) =  \frac{\beta x(y_i)}{\Gamma ( \alpha )} \big[ \beta X(y_{i-1} , y_i ) \big]^{\alpha -1} \exp( - \beta X(y_{i-1} , y_i )  ),
+ \end{equation}
+ 
+ where 
+  \begin{equation}
+X(s,t) = \int^{t}_{s} x(u) du , \qquad \text{for any } s,t \in [0,T].
+\end{equation}
+ 
+ Now we will show that this is equivalent to a $(\gamma, \gamma)$ Gamma distribution by scaling the intensity function.\\
+ 
+ Let $\gamma = \alpha$ and $\kappa = \frac{\beta}{\alpha}$, thus giving $\beta = \gamma \kappa$. Substitute into (2) gives
+ 
+ \begin{equation}
+ p(y_i, y_{i-1}) =  \frac{\gamma \kappa x(y_i)}{\Gamma ( \gamma )} \big[ \gamma \kappa X(y_{i-1} , y_i ) \big]^{\gamma -1} \exp( - \gamma \kappa X(y_{i-1} , y_i )  ).
+ \end{equation}
+ 
+ Now define new intensity function by $\tilde x = \kappa x$, hence giving
+ 
+   \begin{equation}
+\tilde X(s,t) = \int^{t}_{s} \tilde x(u) du = \int^{t}_{s} \kappa x(u) du =  \kappa X(s,t)  , \qquad \text{for any } s,t \in [0,T].
+\end{equation}
+
+Put this into (3) gives
+ \begin{equation}
+ p(y_i, y_{i-1}) =  \frac{\gamma  \tilde x(y_i)}{\Gamma ( \gamma )} \big[ \gamma \tilde X(y_{i-1} , y_i ) \big]^{\gamma -1} \exp( - \gamma \tilde X(y_{i-1} , y_i )  ),
+ \end{equation}
+ 
+ which we see is a $(\gamma, \gamma)$ Gamma distribution. \\
+ 
+ Hence, where we have introduced a two-variable Gamma distribution we cannot retrieve initial choices of variables. I.e $\beta$ is replaced as a variable by the intensity function. The choice of having $\alpha = \beta$ is a sensible choice as this allows the expected number of spikes to not depend on the ISI parameters and only depends on $x$.
+ }
+ 
+ %Inverse Gaussian
+ \subsection{Inverse Gaussian distribution}
+ Similarly we have not considered the full generalised Inverse Gaussian ISI distribution
+ \begin{equation}
+ p(y_i, y_{i-1}) =  x(y_i) \bigg( \frac{\lambda}{2\pi X(y_{i-1} , y_i )^3} \bigg)^{0.5} \exp \bigg[-\frac{\lambda(X(y_{i-1} , y_i )-\mu)^2}{2 \mu ^2 X(y_{i-1} , y_i )} \bigg].
+ \end{equation}
+ 
+ However, we again get non-identifiable variables, in this case if we multiple all the parameters by a constant we get an identical distribution. \\
+ 
+ {\color{blue}
+ Suppose we have an Inverse Gaussian ISI distribution with parameters $(\lambda,\mu)$ and intensity function $x$. We want to show this is identical to an IG$((k\lambda,k\mu))$ with intensity $kx$ for any constant $k$. Firstly, note that the constant comes out the front of of the integral of the intensity function. 
+ 
+    \begin{equation}
+ \int^{t}_{s} \kappa x(u) du = \kappa \int^{t}_{s} x(u) du = \kappa X(s,t)  , \qquad \text{for any } s,t \in [0,T].
+\end{equation}
+
+Hence, we get
+  \begin{align}
+ p(y_i, y_{i-1}|kx,k\lambda,k\mu) &=  kx(y_i) \bigg( \frac{k\lambda}{2\pi (kX(y_{i-1} , y_i ))^3} \bigg)^{\frac{1}{2}} \exp \bigg[-\frac{k\lambda(kX(y_{i-1} , y_i )-k\mu)^2}{2 (k\mu) ^2 kX(y_{i-1} , y_i )} \bigg],\\
+ &=  kx(y_i) \bigg( \frac{1}{k^2}\frac{\lambda}{2\pi X(y_{i-1} , y_i )^3} \bigg)^{\frac{1}{2}} \exp \bigg[-\frac{k\lambda(k(X(y_{i-1} , y_i )-\mu))^2}{2 k^3\mu ^2 X(y_{i-1} , y_i )} \bigg],\\
+  &=  \frac{k}{k}x(y_i) \bigg(\frac{\lambda}{2\pi X(y_{i-1} , y_i )^3} \bigg)^{\frac{1}{2}} \exp \bigg[-\frac{k^3}{k^3}\frac{\lambda(X(y_{i-1} , y_i )-\mu)^2}{2\mu ^2 X(y_{i-1} , y_i )} \bigg],\\
+ &=  x(y_i) \bigg( \frac{\lambda}{2\pi X(y_{i-1} , y_i )^3} \bigg)^{\frac{1}{2}} \exp \bigg[-\frac{\lambda(X(y_{i-1} , y_i )-\mu)^2}{2 \mu ^2 X(y_{i-1} , y_i )} \bigg],\\
+ &= p(y_i, y_{i-1}|x,\lambda,\mu) \qquad \qquad \text{as required.}
+ \end{align}
+ }
+ 
+ %Log Normal
+ \subsection{Log Normal distribution}
+ Next we shall consider the full Log Normal distribution
+ 
+ \begin{equation}
+ p(y_i, y_{i-1}) = \frac{x(y_i)}{X(y_{i-1} , y_i ) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log X(y_{i-1} , y_i ) - \mu)^2}{2\sigma^2} \right\}
+ \end{equation}
+ 
+ However as in the above two cases we get non-identifiable variables. In this case, if we multiply the intensity by a factor of $\kappa$ this is identical to subtracting $\log \kappa$ to $\mu$.\\
+  {\color{blue}
+   Suppose we have an Log Normal ISI distribution with parameters $(\mu,\sigma)$ and intensity function $\kappa x$. We want to show this is identical to an LN$((\mu + \log \kappa,\sigma))$ with intensity $\kappa x$ for any constant $\kappa$.
+   
+     \begin{align}
+ p(y_i, y_{i-1}|\kappa x,\mu,\sigma) &= \frac{\kappa x(y_i)}{\kappa  X(y_{i-1} , y_i ) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log\kappa  X(y_{i-1} , y_i ) - \mu)^2}{2\sigma^2} \right\},\\
+ &=   \frac{ x(y_i)}{  X(y_{i-1} , y_i ) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log\ X(y_{i-1} , y_i ) + \log \kappa - \mu)^2}{2\sigma^2} \right\}\\
+ &=   \frac{ x(y_i)}{  X(y_{i-1} , y_i ) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log\ X(y_{i-1} , y_i )  - (\mu - \log \kappa))^2}{2\sigma^2} \right\}\\
+ &= p(y_i, y_{i-1}|x,\mu - \log \kappa,\sigma) \qquad \qquad \text{as required.}
+ \end{align}
+  }
+  
+   %Weibull
+ \subsection{Weibull distribution}
+ Next we shall consider the Weibull distribution
+ 
+ \begin{equation}
+ p(y_i, y_{i-1}|k,\lambda) = \frac{x(y_i)k}{\lambda} \left( \frac{X(y_{i-1} , y_i )}{\lambda} \right)^{k-1} \exp \left\{ -\left( \frac{X(y_{i-1} , y_i )}{\lambda} \right)^k \right\}
+ \end{equation}
+ 
+ However again we get non-identifiable variables. In this case, if we multiply the intensity by a factor of $m$ this is identical to dividing $\lambda$ by $m$. \\
+  {\color{blue}
+   Suppose we have an Weibull ISI distribution with parameters $(k,\lambda)$ and intensity function $m x$. We want to show this is identical to an Weibull$(k,\frac{\lambda}{m})$ with intensity $x$ for any constant $m$.
+   
+     \begin{align}
+ p(y_i, y_{i-1}|mx, k, \lambda) &= \frac{mx(y_i)k}{\lambda} \left( \frac{mX(y_{i-1} , y_i )}{\lambda} \right)^{k-1} \exp \left\{ -\left( \frac{mX(y_{i-1} , y_i )}{\lambda} \right)^k \right\} \\
+ &=\frac{x(y_i)k}{\lambda/m} \left( \frac{X(y_{i-1} , y_i )}{\lambda/m} \right)^{k-1} \exp \left\{ -\left( \frac{X(y_{i-1} , y_i )}{\lambda/m} \right)^k \right\} \\ 
+ &= p(y_i, y_{i-1}|x,k, \lambda/m) \qquad \qquad \text{as required.}
+ \end{align}
+  }
+ 
+% \section{Why we choose the ISI distribution to have mean 1}
+% Throughout we have defined $x(t)$ to be the intensity function, this means that at any time $t$ $x(t)$ is the rate of spikes. Hence $X(t , s)$ is the expected number of spikes in the interval $[t,s]$. Suppose we choose the ISI distribution to follow the probability distribution $p(t|\theta)$. 
+% %This probability distribution is used to define the stochastic structure of the spike sequence. 
+%  We then want to apply intensity-rescaling transformation, to allow for inhomogeneous spikes, i.e $t \rightarrow X(t,0)$. After the transformation we get:
+%  
+%      \begin{equation}
+% f_t(t_k|t_{k-1}) = x(t_k) p(X(t_k,t_{k-1}) | \theta)
+%\end{equation}
+%
+%Let $\mu$ be the mean of the ISI probability distribution prior to the intensity rescaling. 
+%We will show that this is the case for constant intensity, $x(t)=\kappa$, we require $\mu$ to be 1.
+%
+%  \begin{align}
+%\mathbb{E}[\text{time to spike}] &= \int^{\infty}_0 t x(t_k) p(X(t,0) | \theta)\\
+%&= \int^{\infty}_0 t \kappa p(\kappa t | \theta) dt\\
+%&= \int^{\infty}_0 t \kappa p(\kappa t | \theta) dt\\
+%&= \int^{\infty}_0 z p(z | \theta) \frac{dz}{\kappa}\\
+%&= \frac{1}{\kappa} \int^{\infty}_0 z p(z | \theta) dz\\
+%&= \frac{\mu}{\kappa} \\
+% \end{align}
+% 
+%Hence the expected number of spikes in the interval $[s,t]$ will be $\frac{T\kappa}{\mu}$. Thus, we require $\mu$ to be $1$ to maintain the definition of $x$.\\
+%
+%If we want to generalise the concept to time varying intensity $x(t)$, we first extend the constant function to piecewise constant. Suppose we are interested in the number of spikes in the interval $[t,s]$, and in the interval we have the partition $t=P_0 <P_1< \dots < P_{n-1} < P_n = s$ and corresponding heights $h_1, h_2, \dots , h_{n-1}$. Then using the above for a constant function we get
+%
+%\begin{equation}
+%\mathbb{E}[\text{spikes in [t,s]}] = \frac{\sum^{n-1}_{i=1} h_i(P_{i+1} - P_i)}{\mu}
+%\end{equation} 
+%
+%Then any function can approximated as the limit of piecewise constant functions and hence we have 
+%\begin{equation}
+%\mathbb{E}[\text{spikes in [t,s]}] = \frac{\int^{t}_s x(u) du}{\mu}
+%\end{equation} 
+%
+%Which is exactly what we see in figure 1, when we the choose the ISI distribution to have mean not equal to 1.
+%
+%We want to have the property that $x(t)$ corresponds to the probability of \ce{Ca^2+} spiking independent of the history of the \ce{Ca^2+} spike sequence.
+% That is to say if there are $N$ identical spiking cells, then $Nx(t)$ is the expected number of spikes at time $t$. To visualise the concept we simulate 500 spike sequences from identical distributions and then bin the spikes to create a histogram of the spikes. 
+%
+%   \begin{figure}[t]
+%   \begin{center}
+%    \includegraphics[scale=0.4]{Hist_example1} 
+%    \caption{Histogram of 500 spikes generated from a Gamma ISI distribution, with $x(t) = \frac{1}{2} (\cos(\frac{t}{2})+1)$. Where the parameters for blue, orange and light orange are $(\alpha,\beta)  = (2,4)$, $(4,4)$ and $(8,4)$ respectively. }
+%    \end{center}
+%    \hrulefill
+%    \end{figure}
+%    
+%    \subsection{Constant intensity function}
+%    Now let us take a step back and assume that the intensity function is constant $x(t) = \kappa$. We want to visualise how the different ISI distributions look when we fix the mean and variance, we look at 3 ISI distributions. Namely, Gamma, Inverse Gaussian and the Log Normal distributions. We get the following for the mean and variance of each of the distributions
+%    
+%\begin{align}
+%& = 1/\kappa \qquad(\text{Gamma}) \\
+%\mu \quad \quad&= \kappa  \qquad(\text{Inverse Gaussian}) \\
+%&= 1/\kappa \qquad(\text{Log Normal}) \\
+%&\text{} \\
+%& = 1/(\kappa ^2 \gamma) \qquad(\text{Gamma}) \\
+%\sigma ^2 \quad \quad&= 1/(\kappa ^2 \lambda) \qquad  (\text{Inverse Gaussian}) \\
+%&= e^{2h}/\kappa^2\qquad (\text{Log Normal}) 
+%\end{align}    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% END %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Speed of the GP}
+%Plan:
+%	-Discussion of the MCMC algorithm and how the under-relaxed
+In this section we discuss how a naive implementation of the GP prior in chapter 1 will lead to a computationally expensive algorithm. We will explain different methods to improve the algorithm, and justify our implementation.
+ 
+In this framework we assume a priori that the intensity function $x(t)$ comes from a GP. To allow for computations we discretise time, often set to the frame rate of experimental data. Thus, the prior reduced to a multivariate normal distribution, over a large number of indexes, often greater then 1000 steps. To sample from the posterior intensity we utilise an under-relaxed method, where in each iteration we propose a candidate intensity $x_{\mathrm{can}}$ depending on the current value $x_{\mathrm{cur}}$ by
+$$
+x_{\mathrm{can}} = \sqrt{1-\omega^2} \log \left(x_{\mathrm{cur}} \right) +  \omega \nu , \qquad \nu \sim \mathcal{N}\left( \mathbf{0}, \Sigma \right)
+$$ 
+
+Thus, in each iteration we must generate a draw ($\nu$) from the multivariate normal distribution. This requires the inversion and determinant of the covariance matrix to be calculated, whose dimension is the discretisation chosen for the intensity, thus we need to be able to invert $1000 \times 1000$ matrices, quickly. There exists different methods to compute the matrix decomposition such as via eigenvalues?? or a choleski decomposition. However, these methods tend to be time consuming once the dimension increases. 
+
+We have considered two different methods to improve the time taken, namely by implementing a projection when computing likelihoods and by expressing the GP by its spectral decomposition and simulating by a fast fourier transform (FFT). 
+
+\subsection{Projection}
+Explain how projection works.
+
+\subsection{Spectral representation}
+What is spectral density function? Define/explain.
+In the case of a GP with 0 mean and squared exponential covariance function (write equation?) the spectral density is given by
+
+$$
+S(s) = \sigma^2 \left( 2 \pi \ell^2 \right)^{1/2}\exp \left( -2 \pi^2 \ell^2 s^2 \right) \cite{}
+$$
+
+However, not all kernels have a closed form for the spectral density, as such we can numerically calculate S via a FFT. Explain more. 
+
+%However, in general we do not have a formula for the spectral density. We can numerically solve for S (if isotropic?? ) by:
+%\begin{itemize}
+%\item Find $t_{max}$ the value for which for all $ t > t_{max}$ we have cov$(t) < \epsilon$, for $\epsilon << 1$. (Choose $\epsilon = 1e-4$)
+%\item create a grid $\mathbf{t}$ from $-t_{max}$ to $t_{max}$ in steps of size $\delta t$.
+%\item compute S = (fftshift( fft( cov$(\mathbf{t})$)) $* t_{max}/Nt$) / $2 \pi$.
+%\end{itemize}
+
+Since A zero-mean GP is a real-values 1D-IV stationary stochastic process we can use the following theorem to express the gaussian process as an infinite series. 
+{\it To every real-valued 1D-IV stationary stochastic process $f_0(t)$ with mean value equal to zero and two-sided power spectral density function $S_{f_0,f_0}(\omega)$, two mutually orthogonal real processes $u(\omega)$ and $v(\omega)$ with orthogonal increments $du(\omega)$ and $dv(\omega)$ can be assigned such that
+$$
+f_0(t) = \int^\infty_0 \left[\cos (\omega t)du(\omega) + \sin (\omega t)dv(\omega)  \right]
+$$}
+
+
+
+By the infinite series representation we can simulate the GP by the following series as $N \rightarrow \infty$
+$$
+f(t) = \sqrt{2}\sum^{N-1}_{n=0} A_n \cos(\omega_n t + \Phi_n)
+$$
+where
+$$
+A_n = \left( 2 S(\omega_n) \Delta \omega \right)^{1/2}, \qquad n=0,1,2,\dots,N-1
+$$
+
+$$
+\omega_n = n\Delta \omega , \qquad n=0,1,2,\dots,N-1
+$$
+
+$$
+\Delta \omega = \omega_c / N
+$$
+
+and
+
+$$
+A_0 = 0 \qquad \text{or} \qquad S(\omega_0 = 0) =0
+$$
+
+In equation - $\omega_c$ represents an upper cutoff frequency for which the spectral density is assumed to be zero for any larger frequency. To estimate $\omega_c$ we use the following criteria 
+$$
+\int^{\omega_c}_0 S(\omega) d\omega = \left( 1 - \epsilon \right) \int^{\infty}_0 S(\omega) d\omega
+$$
+
+To further improve the computation time we can rewrite this infinite series to a format which allows for the use of fast Fourier transform. Rewriting we get
+
+$$
+f(p \Delta t) = \Re \left( \sum^{M-1}_{n=0} B_n \exp \left[i (n\Delta \omega ) (p \Delta t) \right] \right)
+$$
+and $B_n$ 
+
+The limitations of sampling from the GP in this method is that the step size, and number of steps is no longer independent. However, by choosing the value of M in a smart way we can still maintain the correct step size. Via 
+
+\begin{algorithm}[t]
+\DontPrintSemicolon
+\textbf{Input:}\text{$N$, $\delta t$, $k(t_1,t_2)$  }\\ 
+\textbf{Output:}\text{ Draw from GP }\\
+\vspace{0.3cm}
+Set $t=0$, $y_{\mathrm{cur}} = 0$, $\mathbf{y} = \oldemptyset$ and $h = T/K$; \;
+\While{$t < T$}{
+	Draw $a \sim U(0,1)$ and set $C = 0$; \;
+	\While{$C< a$}{
+	$t = t+h$; \;
+	\If{$t > T$}{
+	STOP; \;
+	}
+	Numerically calculate $C$ $= \int^t_{y_{\mathrm{cur}}} p(y_{\mathrm{cur}}, u |x(u), \theta ) du$; \;
+	}
+	Add $t$ to the set of spike times $\mathbf{y}$, and set $y_{\mathrm{cur}} = t$; \;
+}
+\textbf{Return} spike times $\mathbf{y}$; \;
+\caption{Simulating Gaussian Process via spectral decomposition.}
+\end{algorithm}
+
+
+\section{Estimating Length Scale}
+
+\end{document}
