@@ -39,7 +39,7 @@ Calcium (\ce{Ca^2+}) is the alkaline earth metal, first discovered by Sir Humphr
  
  In this thesis we consider  \ce{Ca^2+}'s role as an intracellular second messenger, or to be more precise we investigate how changes to the  \ce{Ca^2+}  concentration inside a cell informs us of the applied stimulation. We begin by introducing intracellular \ce{Ca^2+}  signalling, before reviewing the literature of what mathematical models have been used to analyse the signals. Finally, we introduce the goals of our project. 
  
- \subsection{Calcium Signalling}
+ \section{Calcium Signalling}
  In its simplest form cells at rest have a \ce{Ca^2+} concentration of $100nM$ but activates when the level rises to $\sim 1 \mu M$. This elevation of \ce{Ca^2+} can regulate many processes due to its versatility, i.e. speed, amplitude and spatio-temporal patterning.    
 
  Calcium takes part in a variety of biological functions such as
@@ -78,7 +78,7 @@ Changes in cytosolic \ce{Ca^2+} concentration generally doesn't occur uniformly 
 
 % Figure of blip/puffs/waves.
 
-\subsubsection{Encoding and decoding \ce{Ca^2+} Patterns}
+\subsection{Encoding and decoding \ce{Ca^2+} Patterns}
 Cells use spatio-temporal patterns to transmit information (both within the same cell and to surrounding cells) \cite{Petersen_1991,  Dolmetsch_1998, Politi_2006} and consequently to initiate an appropriate physiological response. \cite{Uhlen_2010, Berridge_1998}. However, it is not yet fully understood how encoding and decoding mechanisms convey information. To date, it has been shown that \ce{Ca^2+} responses can vary amongst different cell types \cite{Berridge_1988}, and even in the same cell type \cite{Rooney_1989}. Along with cell type, the agonist type \cite{Rooney_1989, Cornell-Bell_1990, Larsen_2004} and its concentration \cite{Berridge_1988} also affects \ce{Ca^2+} response. 
 
 The relationship between \ce{Ca^2+} oscillations and agonist was first studied in 1986 by Woods et al. \cite{Woods_1986} They found that \ce{Ca^2+} oscillations depended on the hormone concentration used for simulation in single, isolated rat hepatocyte cells. From this, they hypothesised that only the frequency of \ce{Ca^2+} oscillations were effected by the agonist and both amplitude and width of the oscillations were unaffected, which was confirmed in 1987 \cite{Woods_1987}. 
@@ -89,14 +89,14 @@ The relationship between \ce{Ca^2+} oscillations and agonist was first studied i
 Two hypothesis' for stimulus encoding followed from the fixed agonist experiments. Namely, amplitude and frequency modulation (AM and FM \cite{Berridge_1997}. AM proposes that the concentration of agonist increases the amplitude of \ce{Ca^2+} signals, whereas FM claims that the frequency of the \ce{Ca^2+} signals increase with the stimulus strength. Recent studies have shown that \ce{Ca^2+} spike times scales exponentially with the stimulus strength for FM \cite{Thurley_2014}.
 
 %Section on how experimentalists generate spike sequences.
-\subsection{How do we generate spike sequences?}
+\section{How do we generate spike sequences?} % Think about re-phrasing. 
 The aim of our work is to fit statistic models to real spike data. However, before any model fitting it is best to understand how we get spike data from individual cells. 
 
 
 \subsection{Calcium Signalling Models}
 Calcium signalling is often modelled using either deterministic or stochastic models. In this section we provide a short overview of these models. For a more detailed view, we refer readers to \cite{Sneyd_2005, Falcke_2004, Dupont_2011, Thul_2008, Dupont_2016}. 
 
-\subsubsection{\ce{Ca^2+} oscillation modelling}
+\subsection{\ce{Ca^2+} oscillation modelling}
 %Need something to say considering only \ce{IP_3} pathway (i.e. not RyR)
 We have shown that cytosolic \ce{Ca^2+} concentration, $c(t))$ is controlled through \ce{IP_3R} and SERCA/PMCA pumps. \ce{IP_3R} controls \ce{Ca^2+} release from the ER into the cytoplasm ($J_{\ce{IP_3R}}$). Whereas SERCA/PMCA pumps transport \ce{Ca^2+} from the cytoplasm back into the ER ($J_{SERCA}$) and outside the cell ($J_{PMCA}$) respectively. Combining the fluxes, we can mathematically describe the \ce{Ca^2+} concentration by 
 \begin{equation}
@@ -136,12 +136,12 @@ where the parameters $c_1, c_{\mathrm{er}}, v_1$ and $v_2$ correspond to the rat
     
     
     
-\subsubsection{\ce{Ca^2+} waves}
+\subsection{\ce{Ca^2+} waves}
 Whilst the DYK improved understanding of \ce{Ca^2+} signalling toolbox, it only considers temporal changes in the cytosolic \ce{Ca^2+} concentration. It is know (see figure -- ) that \ce{Ca^2+} patterns vary in both time and space. To incorporate this into \eqref{} a diffusion term is added
 \begin{equation}
 \frac{\partial c}{\partial t} = D_c\frac{\partial^2 c}{\partial x^2}
 \end{equation}
 
-\subsubsection{Stochastic Models}
+\subsection{Stochastic Models}
    
 \end{document}

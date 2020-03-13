@@ -21,6 +21,9 @@
 \usepackage{afterpage} %spacing before landscape
 \usepackage[version=3]{mhchem} % For Ca^2+
 \let\oldemptyset\emptyset % empty set symbol
+\usepackage{bbm} % for \mathbbm{}
+\usepackage{mathtools} % for \splitdfrac{}
+
 % Algorithms 
 %\usepackage{algorithm}
 \usepackage[ruled,vlined]{algorithm2e}
@@ -29,6 +32,11 @@
 \def\BState{\State\hskip-\ALG@thistlm}
 \makeatother
 %\usepackage[]{algorithm2e}
+
+% Formatting for steps.
+\usepackage{enumitem}
+\newlist{steps}{enumerate}{1}
+\setlist[steps, 1]{label = \it Step \arabic*:}
 
 %Headers and Footers
 \usepackage{fancyhdr}
