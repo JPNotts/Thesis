@@ -2,8 +2,49 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+The model we have created applies methods well-known in the field of statistics, however applying these methods to our model brings unique issues/decisions. In this chapter we will discuss these complications and explain and justify the decisions we make going forward. 
+
 %% This part is describing the non-identifability of the ISI distribution choices.
 \section{ISI Distribution}
+In chapter 2 we have assumed that the ISI distribution follows an inhomogeneous gamma distribution as detailed in equation -. This is the model that was used to best effect by Titulane et al \cite{} when applying similar methods to HEK293 cells stimulated with Carbohol. In their paper they tested three potential ISI distributions, which they named the inhomogeneous Poisson 
+$$
+p(y_i,y_{i-1} | \gamma) = ,
+$$
+
+the inhomogeneous Gamma
+
+$$
+p(y_i,y_{i-1} | \gamma) = ,
+$$
+
+and the inhomogenous Inverse Gaussian
+
+$$
+p(y_i,y_{i-1} | \gamma) = .
+$$
+These distributions were chosen because ... . However, this is clearly not a list of all possible distributions, and it is possible that another non-tested distribution would give a better fit. Thus, we will extend the number of ISI distributions to be considered to include a Log Normal distribution and a Weibull distribution. We want to consider these distributions because ... . 
+
+By the introduction of the intensity function we can see that the above distributions are generalisations of one-parameter Gamma and Inverse Gaussian distributions, namely Gamma$(\gamma, \gamma)$ and InverseGaussian$(-,-)$. A natural question would be to ask whether we can generalise further and allow for the distributions two-parameter versions, such as the Gamma$(\alpha, \beta)$. However, by generalising the ISI distribution we create non-identifiability issues, where by scaling the ISI parameters with the intensity function we 
+ 
+\subsection{Non-Identifiability issues with two parameter ISI distributions} 
+To begin we will consider the Gamma distribution. Thus suppose the ISI distribution is defined by
+
+\begin{equation}
+ p(y_i, y_{i-1}| x, \alpha \beta) =  \frac{\beta x(y_i)}{\Gamma ( \alpha )} \big[ \beta X(y_{i-1} , y_i ) \big]^{\alpha -1} \exp( - \beta X(y_{i-1} , y_i )  ),
+ \end{equation}
+ 
+ where 
+  \begin{equation}
+X(s,t) = \int^{t}_{s} x(u) du , \qquad \text{for any } s,t \in [0,T].
+\end{equation}
+
+
+ 
+\subsection{Choosing one-parameter ISI distributions}
+Thus, we for each of the generalised two-parameter ISI distributions we need to choose a parameterisation to remove the non-identifiability issues. 
+
+Thus, the ISI distributions we will consider are the following:
+
 %GAMMA
 \subsection{Gamma distribution}
 Throughout we have assumed that the Gamma ISI distribution is as follows 

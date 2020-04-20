@@ -1,4 +1,4 @@
-\babel@toc {english}{}
+\select@language {english}
 \thispagestyle {empty}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
@@ -32,3 +32,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Examples of generated spike sequences using {SimSpikes}. \relax }}{66}{figure.caption.16}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{66}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{66}{subfigure.1.2}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }}{67}{figure.caption.17}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{67}{subfigure.2.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{67}{subfigure.2.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Print-screen of main pain of ViewData app where the threshold input has been updated to be $0.7$. \relax }}{69}{figure.caption.18}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Print screen of App where threshold has been updated to `0.7,0.45,0.7,800,1000'.\relax }}{70}{figure.caption.19}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Main Panel where we remove two transient regions. The first region between 0s and 200s. The second interval is between 3300s and 3500s.\relax }}{71}{figure.caption.20}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Main panel where linear trends are removed.\relax }}{72}{figure.caption.21}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }}{73}{figure.caption.22}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{73}{subfigure.7.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{73}{subfigure.7.2}
