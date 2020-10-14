@@ -1,7 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2017)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/jakepowell/Thesis/.texpadtmp/main.aux
-White space in argument---line 234 of file /Users/jakepowell/Thesis/.texpadtmp/main.aux
+White space in argument---line 376 of file /Users/jakepowell/Thesis/.texpadtmp/main.aux
  : \citation{fig:
  :                ViewData}
 I'm skipping whatever remains of this command
@@ -50,9 +50,21 @@ Warning--I didn't find a database entry for "Falcke_2003"
 Warning--I didn't find a database entry for "Cuthbertson_1991"
 Warning--I didn't find a database entry for "Chay_1995"
 Warning--I didn't find a database entry for "Kummer_2005"
+Warning--I didn't find a database entry for "Skupin_2008"
+Warning--I didn't find a database entry for "Skupin_2010"
+Warning--I didn't find a database entry for "Friedman2001"
+Warning--I didn't find a database entry for "Estivill_Castro_2002"
+Warning--I didn't find a database entry for "Arthur_2007"
+Warning--I didn't find a database entry for "Comaniciu_2002"
+Warning--I didn't find a database entry for "Ester_1996"
+Warning--I didn't find a database entry for "Ng_2001"
+Warning--I didn't find a database entry for "Tilunaite_2017"
+Warning--I didn't find a database entry for "Delaigle_2019"
+Warning--I didn't find a database entry for "Haar_1910"
+Warning--I didn't find a database entry for "Debnath_2003"
 You've used 23 entries,
             1935 wiz_defined-function locations,
-            736 strings with 9203 characters,
+            760 strings with 9491 characters,
 and the built_in function-call counts, 10296 in all, are:
 = -- 984
 > -- 493

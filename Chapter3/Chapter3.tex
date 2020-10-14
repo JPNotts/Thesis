@@ -4,25 +4,179 @@
 
 The model we have created applies methods well-known in the field of statistics, however applying these methods to our model brings unique issues/decisions. In this chapter we will discuss these complications and explain and justify the decisions we make going forward. 
 
-%% This part is describing the non-identifability of the ISI distribution choices.
+%% ISI distribution section.   
 \section{ISI Distribution}
-In chapter 2 we have assumed that the ISI distribution follows an inhomogeneous gamma distribution as detailed in equation -. This is the model that was used to best effect by Titulane et al \cite{} when applying similar methods to HEK293 cells stimulated with Carbohol. In their paper they tested three potential ISI distributions, which they named the inhomogeneous Poisson 
+
+% Intro of the importance of the ISI distribution. What it involves and what it can inform us on. Why we care.
+In this section we discuss the importance of the inter-spike interval (ISI) distribution. In Chapter 2 --- page { \color{red} XX} --- we gave an example whereby we created a ISI distribution by extending the one dimension Gamma $(\gamma, \gamma)$ distribution. The extension is performed by applying a time-rescaling method via the intensity function $x(t)$ which accounts for the time-dependence of \ce{Ca^2+} spiking. A natural question is why did we choose the one dimension Gamma distribution and is the choice of distribution important? 
+
+To begin, let us first consider the case of stationary \ce{Ca^2+} spikes --- by this we mean spikes that depends only on the time since the last spike and not the time of the experiment. Thus the ISI distribution can be modelled as a function of the time $s$ since the last spike, whose domain is $(0,\infty)$. We can choose to model the ISI distribution $\psi (s)$ as common probability distribution such as: an Exponential distribution 
+$$ \psi (s | \alpha ) = e^{-\alpha s}$$
+  a Gamma distribution
+   $$ \psi(s| \alpha, \beta ) = e^{-\alpha(t_2-t_1)}$$,
+ or a Weibull distribution
+   $$ \psi(s | \lambda, k ) = e^{-\alpha}$$
+   
+ where $\{ \alpha\}$, $\{\alpha, \beta\}$ and $\{\lambda , k\}$ the ISI parameters for distribution respectively. Each distribution, can be justified as a model for the ISI distribution. For example, if we believed spikes occur independently then the exponential distribution is suitable. 
+% Add Gamma just and Inv Gauss just. 
+
+To find which of the models best describes a \ce{Ca^2+} spike sequence we first convert the spike sequence into a sequence of $M$ ISI times $\{T_i\}_{i=1}^M$. Then to fit each model $\psi(s|\theta)$ with $\theta$ the probability distributions parameter/s we calculate the MAP estimator by 
+$$\hat \theta  = \mathrm{arg max} \left\{ \prod ^M_{i=1} \psi(T_i | \theta ) \right\}$$.
+
+%Example using Ca spike sequence. 
+We consider a spike sequence from a HEK293 cell stimulated 
+
+
+
+%Summary of the stationary case. 
+The above shows that the choice of ISI distribution parameterisation is important, as we find different distributions are more suitable than others. 
+At this stage, one could argue to use a non-parameteric method to estimate the ISI distribution. This would indeed be a more flexible framework since the ISI distribution would not be limited to the shape of the chosen probability distribution. 
+However, it is important to note although we may find that one probability distribution best describes the \ce{Ca^2+} spikes, there may exist a better untested model. 
+In this setting another option would be to use histogramming, kernel densities, or non-parametric methods to infer the ISI distribution. 
+ 
+
+%Back to our model.
+Returning to our model, we can generalise any probability distribution on $(0,\infty)$ to create a non-stationary ISI distribution. To generalise the distribution $\psi(s|\theta)$ we rescale time via the positive intensity function $x(t)$. In this new time 
+$$ p(s,t |x,\theta) = x(t)\psi (\int^t_s x(u)du|\theta) $$.
+
+Thus, by applying the transformation we create the (inhomogenous) Gamma
+
 $$
-p(y_i,y_{i-1} | \gamma) = ,
+ p(y_i, y_{i-1}| x, \alpha, \beta) =  \frac{\beta x(y_i)}{\Gamma ( \alpha )} \big[ \beta X(y_{i-1} , y_i ) \big]^{\alpha -1} \exp( - \beta X(y_{i-1} , y_i )  ),
+$$
+ the inhomogenous
+
+
+% Non identifiability. 
+
+
+In our model we consider time-dependent \ce{Ca^2+} spiking. In practice, this is done by extending the concept of modelling the ISI distribution with a known probability distribution via the time-rescaling theorem. We begin by choosing a probability distribution $p_{\mathrm{stat}}$ on $(0,\infty)$ with parameter/s $\theta$. We then introduce the intensity function $x(t)$ defined on the experiment time $[0,T]$. By rescaling the ISI 
+
+Recall, in our model we are considering time-dependent \ce{Ca^2+} spiking. Thus we generalise the ISI distribution via the time-rescaling theorem. Recall from Chapter 2 we begin by choosing a probability distribution $p_{\mathrm{orig}}(t_1,t_2 | \theta)$. 
+
+
+To stress the importance of the choice of ISI distribution suppose we have given a spike sequence containing 35 spikes over 2800s. Assuming the spiking rate is constant we expect the mean time between spikes to be 80s. Suppose we chose the an exponential as the ISI distribution. 
+  \begin{figure}[t]
+   \hrulefill
+   \begin{center} 
+    \subfloat{{\includegraphics[width=0.8 \linewidth]{ExampleISI} }}
+    \end{center}     
+    \caption{Example ISI distributions.   }
+    \label{fig:ExampleISI}
+    \hrulefill
+    \end{figure}
+
+In figure \ref{fig:ExampleISI} we 
+
+% Summary of how we generalise to allow for non-stationary spikes. With justification why we want to do this. 
+In the above example the we assumed that the spiking rate is constant, however our model is based on the assumption that the spiking rate varies over time. Thus, figure \ref{fig:ExampleISI} is a snapshot of how the ISI distribution looks at a single moment in time. 
+To model the time-heterogeneity we transform the original probability distribution via the time-rescaling theorem, as described in Chapter 2. To summarise this approach we begin fixed distribution $p$ with parameters $\theta$ to describe the ISI distribution in the stationary setting. To generalise for non-stationary spikes we apply the transform to this distribution and obtain the inhomogeneous ISI distribution which depends on the parameters $\{\theta, x\}$, where $x$ is the intensity function. 
+
+\begin{align} \label{eq:5}
+g(z_i,z_{i+1} | x) =& \frac{dz}{dt} \bigg\rvert_{y_{i+1}} p(z_i, z_{i+1}),  \\
+=& x(y_{i+1}) p(z_i, z_{i+1}). \label{eq:5b}
+\end{align}
+
+----%Example of the weibull dist. 
+
+
+% Consider previous results and which models were considered. Pros and cons. 
+
+% How can we extend to consider more ISI distributions.
+Our aim is to extend the number of ISI distributions used to model \ce{Ca^2+} spikes, which the intention of confirming that the Gamma distributions performs best or finding a distribution that better describes \ce{Ca^2+} spikes. 
+
+% Option 1 include more base probability dists. Why these distributions? 
+We first extend the number of ISI distributions considered by also using a Weibull and Log Normal distribution. The motivation behind these distributions are ... 
+ 
+% Option 2. Note that the previous results only considered 1-D dists of G and IG. Can we generalise? 
+The second approach is by generalising the current distributions. Consider the ISI distributions used by Titunaite et al, these are inhomogeneous versions of Gamma$(\gamma, \gamma)$ and Inverse Gaussian $(\alpha,1)$ distributions. Hence they are inhomogeneous versions of one-parameter distributions. Thus, a natural question is why did they choose one-parameter version of these distributions and can we generalise these distributions to their two-parameter counterparts?  
+
+% Non identifiability of generalised models. 
+We begin by considering the Gamma distribution 
+$$ 100$$ 
+transforming via the time-rescaling theorem gives the inhomogeneous two-parameter Gamma distribution as 
+\begin{equation*}
+ p(y_i, y_{i-1}| \alpha, \beta, x(t)) =  \frac{\beta x(y_i)}{\Gamma ( \alpha )} \big[ \beta X(y_{i-1} , y_i ) \big]^{\alpha -1} \exp( - \beta X(y_{i-1} , y_i )  ),
+ \end{equation*}
+ 
+ One way to visualise this, is that the intensity function replaces one of the parameters of the original distribution. 
+
+% Choosing the version of each model. Why? 
+	
+%Figure of comparing histograms with different parameterisations. 
+  \begin{figure}[t]
+   \hrulefill
+   \begin{center} 
+    \subfloat{{\includegraphics[width=0.8 \linewidth]{CompareHist} }}
+    \end{center}     
+    \caption{Histograms comparing the intensity to histograms of 1000 simulated spike sequences. The light and dark histograms correspond to simulating spikes with ISI distributions Gamma(1.8,1.8) and Gamma(3.6,1.8) respectively.  }
+    \label{fig:CompareHist}
+    \hrulefill
+    \end{figure}
+    
+% Possible further extensions. Include refractory explicitly. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+The ISI distribution is an important piece of the \ce{Ca^2+} spiking mechanism. In fact, if we assumed the spiking rate was stationary the ISI distribution would fully describe the \ce{Ca^2+} spikes. 
+
+It is important to note that apriori we have little idea what the ISI distribution will look like. 
+
+
+
+
+
+
+
+
+%An integral part of our model is the ISI distribution. The ISI distribution informs characterises how spike times are related to each other etc. A priori there is no information on what ISI distribution will best describe the \ce{Ca^2+} spikes. Any probability distribution on $[0,\infty )$ could be used to describe the ISI distribution. 
+In our methodology we begin by choosing a probability distribution $p$ on $[0,\infty )$ --- such as a exponential or Gamma distribution. Then to allow for heterogeneity we apply the time rescaling theorem to generate a probability model dependent on the intensity function $x(t)$ and probability distribution $p$ with parameters $\theta$. In Chapter 2 we described how to infer the model parameters when the chosen probability distribution was a Gamma distribution. However, there is no prior information suggesting that the Gamma is the best distribution to use. 
+
+
+%Discussion of previously used ISI distributions. 
+However, Titunate et al \cite{} have tested 3 probability distribution to HEK293 cells stimulated with Carbohol. The ISI distributions they tested were the 
+%In Chapter 2 we assumed that the ISI distribution follows an inhomogeneous gamma distribution as detailed in equation ---. This is the model that was found to perform best by Titulane et al \cite{} when applying similar methods to HEK293 cells stimulated with Carbohol. In their paper they tested three potential ISI distributions, which they named the
+ (inhomogeneous) Poisson 
+$$
+p(y_i,y_{i-1} | x) = x(y_i) e^{-X(y_i,y_{i-1})} ,
 $$
 
-the inhomogeneous Gamma
+the (inhomogeneous) Gamma
 
 $$
-p(y_i,y_{i-1} | \gamma) = ,
+p(y_i,y_{i-1} | x,\gamma) = \frac{\gamma x(y_i)}{\Gamma(\gamma)}\left[\gamma X(y_i,y_{i-1}) \right]^{\gamma -1} e^{-\gamma X(y_i,y_{i-1})},
 $$
 
-and the inhomogenous Inverse Gaussian
+and the (inhomogeneous) Inverse Gaussian
 
 $$
-p(y_i,y_{i-1} | \gamma) = .
+p(y_i,y_{i-1} | x,\alpha) = \frac{x(y_i)}{\sqrt{2 \pi X(y_i,y_{i-1})^3}} \exp \left\{ -\frac{\left( X(y_i,y_{i-1}) - \alpha \right)^2}{2 \alpha^2 X(y_i,y_{i-1}) } \right\}.
 $$
-These distributions were chosen because ... . However, this is clearly not a list of all possible distributions, and it is possible that another non-tested distribution would give a better fit. Thus, we will extend the number of ISI distributions to be considered to include a Log Normal distribution and a Weibull distribution. We want to consider these distributions because ... . 
+The inhomogeneous Poisson is the simplest inhomogeneous point process, based on an exponential ISI probability distribution. Titunate et al found that the inhomogeneous Gamma distribution preformed best out these ISI distributions by comparing QQ and KS plots --- see chapter 5? for a discussion on how these methods compare ISI distributions. 
+
+Clearly, this is not an exhaustive list of all potential probability distributions that can explain the ISI distribution. Thus, it is possible that a different distribution may describe the \ce{Ca^2+} spikes equally well or better than the Gamma ISI distribution above. 
+
+Recall when describing the model we begin by first considering a homogeneous process. We choose the probability distribution $p$ on $[0,\infty)$, with parameters $\theta$ to describe the ISI distribution. Then we extend to a time-dependent model by applying the time-rescaling theorem where in the new time  
+ 
+The first distribution is called the inhomogenesous Poisson because the exponential distribution leads to the definition of a Poisson process. This ISI distribution    These distributions were chosen because ... . However, this is clearly not a list of all possible distributions, and it is possible that another non-tested distribution would give a better fit. Thus, we will extend the number of ISI distributions to be considered to include a Log Normal distribution and a Weibull distribution. We want to consider these distributions because ... . 
+
+%Extend by generalising distributions
+
+% Decide on the parameterisation we want.
+Above we have seen that 
+
+    
+Notice that the IG and IIG distributions are generalisations of one-parameter Gamma and Inverse Gaussian distributions, namely Gamma $(\gamma, \gamma)$ and InverseGaussian$(\alpha,1)$.
 
 By the introduction of the intensity function we can see that the above distributions are generalisations of one-parameter Gamma and Inverse Gaussian distributions, namely Gamma$(\gamma, \gamma)$ and InverseGaussian$(-,-)$. A natural question would be to ask whether we can generalise further and allow for the distributions two-parameter versions, such as the Gamma$(\alpha, \beta)$. However, by generalising the ISI distribution we create non-identifiability issues, where by scaling the ISI parameters with the intensity function we 
  
@@ -320,5 +474,56 @@ Set $t=0$, $y_{\mathrm{cur}} = 0$, $\mathbf{y} = \oldemptyset$ and $h = T/K$; \;
 
 
 \section{Estimating Length Scale}
+\begin{figure}[t]
+	\includegraphics[width=\linewidth]{L_Estimate_Exs}
+	\caption{Plot showing the mean posterior intensity functions with different fixed values of $l$, where the input data are the ticks on the x-axis.}
+	\label{fig: LEstimate_EqualLikeli}
+\end{figure}
+
+For the GP prior there are three hyperparameters in the square exponential covaraince function, namely 
+\subsection{How to estimate}
+\subsection{Estimating with multiple data}
+Suppose we now have several spike sequences corresponding to the same cell. We shall show that with simulated data that we can recover the all model parameters in this case. 
+
+First we must choose the model we are going to use to generate the surrogate data. We take the experiment time to be $[0,30]$, then to choose an intensity function with a certain length scale we draw from a GP with the length scale taken to be 3. We further check the length scale of this intensity by estimating its value by an MCMC where the intensity is fixed and we calculate the posterior length scale. In figure \ref{fig: L_Estimate1} (A) we see the generated intensity which has been shifted by 1.4 so that the intensity is positive. In figure \ref{fig: L_Estimate1} (B) shows the trace plot for the posterior of $l$ given the intensity in (A) we see that this shows that the length scale for this function belongs in the interval $[5, 6.5]$. 
+
+\begin{figure}
+	\begin{subfloat}[]{
+	\includegraphics[width = 0.5\linewidth]{L_estimate_int}}
+	\end{subfloat}
+	\begin{subfloat}[]{
+	\includegraphics[width = 0.5\linewidth]{L_Estimate_lhist}}
+	\end{subfloat}	
+		\caption{(A) The intensity function drawn from a GP with mean 0 and length scale 3, used as the input to generate spike sequences. (B) Historgram of posterior samples of $l$ for the intensity function in (A). }
+\label{fig: L_Estimate1}
+\end{figure}
+
+We now generate spike times from a model with the intensity described above. Furthermore, we set the ISI distribution to be a Gamma distribution with hyper parameter $\gamma = 7$. The results of the 20 simulated spike sequences can be seen in figure \ref{fig: L_estimate2}. We then use these spike sequences as an input into the MCMC algorithm where we assume that the intensity is apriori a GP. The posterior distribution is shown in figure \ref{fig: L_Estimate3}. Where the inputs to the algorithm were: iterations = 50000, burn = 20000, $\omega = 0.001$, the prior belief for $\gamma$ is exponential with rate 0.001, and the GP hyper parameters are set to $\sigma_f = 1000$ and $\sigma_n = 0.001$ with the RW metropolis for $\gamma$ and $l$ variance both set to 0.5. We see the posterior mean for $\gamma$ and $l$ are XX and XX respectively. This is close to the `true' values that the spikes were simulated from. Furthermore, we see in XX that the shape of the posterior intensity is similar to the inputted intensity. %Maybe more detail
+
+From the above example we see that if we have several spike sequences for the same cell which can be inputted collectively then we can retrieve results very close to those that the spike sequences were simulated from. %Explain how this is better than if we only have one sequence.  
+   
+\begin{figure}
+	\begin{subfloat}[]{
+	\includegraphics[width = \linewidth ]{L_estimate1}}
+	\end{subfloat}
+	\begin{subfloat}[]{
+	\includegraphics[width = 0.5\linewidth]{L_Estimate3}}
+	\end{subfloat}
+	\begin{subfloat}[]{
+	\includegraphics[width = 0.5\linewidth]{L_Estimate4}}
+	\end{subfloat}	
+		\caption{(A) The posterior intensity function (black) with 95\% confidence interval (grey), with the intensity function (red) that the spikes were drawn from. (B)(C) historgram of posterior for $l$ and $\gamma$ respectively. }
+\label{fig: L_Estimate1}
+\end{figure}
+
+
+\subsection{Issues with single spike sequence}
+
+\begin{figure}[t]
+	\includegraphics[width=\linewidth]{L_Estimate_SameLikeli}
+	\caption{A plot show two intensities with different length scales, however both curves have the same integral between spike times and thus the same likelihood.}
+	\label{fig: LEstimate_EqualLikeli}
+\end{figure}
+
 
 \end{document}

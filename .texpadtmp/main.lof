@@ -29,19 +29,84 @@
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{50}{subfigure.10.3}
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{50}{subfigure.10.4}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Example ISI distributions. \relax }}{54}{figure.caption.15}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Histograms comparing the intensity to histograms of 1000 simulated spike sequences. The light and dark histograms correspond to simulating spikes with ISI distributions Gamma(1.8,1.8) and Gamma(3.6,1.8) respectively. \relax }}{55}{figure.caption.16}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Plot showing the mean posterior intensity functions with different fixed values of $l$, where the input data are the ticks on the x-axis.\relax }}{65}{figure.caption.18}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces (A) The intensity function drawn from a GP with mean 0 and length scale 3, used as the input to generate spike sequences. (B) Historgram of posterior samples of $l$ for the intensity function in (A). \relax }}{66}{figure.caption.19}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{66}{subfigure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{66}{subfigure.4.2}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces (A) The posterior intensity function (black) with 95\% confidence interval (grey), with the intensity function (red) that the spikes were drawn from. (B)(C) historgram of posterior for $l$ and $\gamma $ respectively. \relax }}{67}{figure.caption.20}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{67}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{67}{subfigure.5.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{67}{subfigure.5.3}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces A plot show two intensities with different length scales, however both curves have the same integral between spike times and thus the same likelihood.\relax }}{68}{figure.caption.21}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Examples of generated spike sequences using {SimSpikes}. \relax }}{66}{figure.caption.16}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{66}{subfigure.1.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{66}{subfigure.1.2}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }}{67}{figure.caption.17}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{67}{subfigure.2.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{67}{subfigure.2.2}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Print-screen of main pain of ViewData app where the threshold input has been updated to be $0.7$. \relax }}{69}{figure.caption.18}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Print screen of App where threshold has been updated to `0.7,0.45,0.7,800,1000'.\relax }}{70}{figure.caption.19}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Main Panel where we remove two transient regions. The first region between 0s and 200s. The second interval is between 3300s and 3500s.\relax }}{71}{figure.caption.20}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Main panel where linear trends are removed.\relax }}{72}{figure.caption.21}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }}{73}{figure.caption.22}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{73}{subfigure.7.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{73}{subfigure.7.2}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces An explanation of how we generate intensity functions (D) from experimental data. For a single cell we begin with a Fura-2 fluorescence intensity trace (A) --- the changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$) --- which is thresholded to calculate \ce {Ca^2+} spike times (B). The \ce {Ca^2+} spike times are used as an input into our model which returns the posterior distribution of the intensity function (C). The posterior distribution in (C) shows the mean (black line) with 95\% confidence interval (grey region).\relax }}{74}{figure.caption.22}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Example of clustering using k-means with 3 clusters. Each point on the graph corresponds to a single intensity function. Red/black/green corresponds to which cluster the intensity function belongs. The crosses correspond to the center of each cluster.\relax }}{77}{figure.caption.23}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Example of clustering methodology applied to three functions. The black and blue lines are grouped together as they have similar shape. Whereas, although the red and black lines have a similar intensity they will not be grouped together as they have different shapes.\relax }}{78}{figure.caption.24}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Clustering a dataset containing constant functions and functions with a single bump. In (A) we cluster using the method in Tilunaite and (B) Delaigle.\relax }}{79}{figure.caption.25}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{79}{subfigure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{79}{subfigure.4.2}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces The first 8 Haar bases on the interval $[0,20]$.\relax }}{82}{figure.caption.26}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$h_1$}}}{82}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$h_2$}}}{82}{subfigure.5.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$h_3$}}}{82}{subfigure.5.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$h_4$}}}{82}{subfigure.5.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$h_5$}}}{82}{subfigure.5.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {$h_6$}}}{82}{subfigure.5.6}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {$h_7$}}}{82}{subfigure.5.7}
+\contentsline {subfigure}{\numberline {(h)}{\ignorespaces {$h_8$}}}{82}{subfigure.5.8}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Approximating a function via the Haar basis. The function (black line) is approximated by using 2 (red), 8 (orange) and 32 (blue) Haar bases.\relax }}{86}{figure.caption.28}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Functions (black lines) drawn from a GP on the interval $[0,20]$ with step size equal to 0.01 and length scale equal 2 (A), 4 (B) and 10 (C). The red piecewise constant functions show the approximation given by 16 Haar bases. The intervals of the finest 8 Haar bases are visualised by the regions separated by the grey lines. \relax }}{90}{figure.caption.30}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{90}{subfigure.7.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{90}{subfigure.7.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{90}{subfigure.7.3}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Visualisation of extracting features for the functions in Figure \ref {fig:Extractfeature}. In step 2 we highlight the bases whose coefficient is larger than the threshold --- 0.18, 0.13 and 0.08 for functions 1, 2 and 3 respectively. In step 3 the orange box symbolised the base added into the important bases, when checking for a peak. In step 4 we split the bases into consecutive indices, hence splitting the bases for function 1 into two groups, shown in light and dark blue. In step 5 each group from step 4 is partitioned into negative (red) and positive values (yellow). The boxes surrounding the bases shows the different features found by looking at the pattern of sign changes. Function 1 has two features; a bump in bases $\{9,10,11,12\}$ and another bump in bases $\{15,16\}$. Function 2 also has two features; a bump in bases $\{9,10,11,12,13\}$ and an increasing region in bases $\{14,15,16\}$. Function 3 has one feature; a bump in the bases $\{9, \dots , 16\}$.\relax }}{91}{figure.caption.31}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces (A) shows the functions to be clustered, where the first 10 functions (black lines) have a single bump in $[0,10]$, functions 11-20 (red lines) have a single bump in $[10,20]$, and functions 21-30 (blue lines) have a bump in each region. (B) shows the resultant features of each function and (C) the features magnitude.\relax }}{98}{figure.caption.33}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{98}{subfigure.9.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{98}{subfigure.9.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{98}{subfigure.9.3}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Clusters of the simulated dataset, where clustering depends on position and magnitudes of features explained in Table \ref {table:ExCluster2}. \relax }}{101}{figure.caption.35}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces { $\{1,3,8,9,10\}$}}}{101}{subfigure.10.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\{2,4,5,6,7\}$}}}{101}{subfigure.10.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$\{11,16,19\}$}}}{101}{subfigure.10.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$\{12,13,14,15,17,18,20\}$}}}{101}{subfigure.10.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$\{22,24,25,30\}$ }}}{101}{subfigure.10.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces { $\{21,23,26,27,28,29\}$}}}{101}{subfigure.10.6}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Fura-2 fluorescence intensity traces of two HEK293 cells stimulated with $50\mu \mathrm {M}$ carbachol, kindly provided by M. Falcke. Changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$).\relax }}{103}{figure.caption.36}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{103}{subfigure.11.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{103}{subfigure.11.2}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Example of removing the trend from ISIs, where the ISIs with trends are shown by black dots and the ISIs with linear trends removed are red. The solid lines show the linear trends in the respective ISIs. \relax }}{104}{figure.caption.37}
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Posterior mean (solid line) and 95\% confidence interval (shaded) for two cells, where red corresponds to fitting without removing linear trends and black with removing linear trends.\relax }}{105}{figure.caption.38}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{105}{subfigure.13.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{105}{subfigure.13.2}
+\contentsline {figure}{\numberline {6.14}{\ignorespaces The posterior intensity functions obtained from the constant stimulus experiment.\relax }}{107}{figure.caption.40}
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Matrix containing the extracted features for the constant stimulus experiment \relax }}{108}{figure.caption.41}
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Matrix containing the magnitudes of the features for the constant stimulus experiment.\relax }}{109}{figure.caption.42}
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Histogram of the magnitudes of all the features found from the intensity functions inferred from the constant stimulus experiments.\relax }}{110}{figure.caption.43}
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Clusters of the intensity functions inferred from a constant stiulus experiment. (A) and (B) corresponds to clusters with and without bumps respectively. Whereas, (C) and (D) corresponds to clustering on functions that do and do not rebound after the initial decrease in intensity respectively. \relax }}{112}{figure.caption.44}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{112}{subfigure.18.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{112}{subfigure.18.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{112}{subfigure.18.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{112}{subfigure.18.4}
+\contentsline {figure}{\numberline {6.19}{\ignorespaces (A) shows the intensity functions inferred from the step change experiment. (B) shows the extracted features of each function and (C) the feature's magnitude. The functions in (A) are coloured corresponding to the row that describes their features in (B) and (C).\relax }}{114}{figure.caption.45}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{114}{subfigure.19.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{114}{subfigure.19.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{114}{subfigure.19.3}
+\contentsline {figure}{\numberline {6.20}{\ignorespaces Clusters of the intensity functions obtained from a step change experiment. We cluster into 3 groups; (A) functions with a large bump, (B) functions that have a decrease after the bump in $[3000,4000]$ and (C) those that do not have a decrease afterwards.\relax }}{115}{figure.caption.46}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{115}{subfigure.20.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{115}{subfigure.20.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{115}{subfigure.20.3}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Examples of generated spike sequences using {SimSpikes}. \relax }}{121}{figure.caption.47}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{121}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{121}{subfigure.1.2}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }}{122}{figure.caption.48}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{122}{subfigure.2.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{122}{subfigure.2.2}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Print-screen of main pain of ViewData app where the threshold input has been updated to be $0.7$. \relax }}{124}{figure.caption.49}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Print screen of App where threshold has been updated to `0.7,0.45,0.7,800,1000'.\relax }}{125}{figure.caption.50}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Main Panel where we remove two transient regions. The first region between 0s and 200s. The second interval is between 3300s and 3500s.\relax }}{126}{figure.caption.51}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Main panel where linear trends are removed.\relax }}{127}{figure.caption.52}
