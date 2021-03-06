@@ -1,0 +1,57 @@
+\begin{thebibliography}{1}
+
+\bibitem{ross98}
+Sheldon~M. Ross.
+\newblock {\em A First Course in Probability}.
+\newblock Prentice Hall, Upper Saddle River, N.J., fifth edition, 1998.
+
+\bibitem{Powell_2020}
+Jake Powell, Martin Falcke, Alexander Skupin, Tomas Bellamy, Theodore Kypraios,
+  and R{\"u}diger Thul.
+\newblock {\em A Statistical View on Calcium Oscillations}, volume 1131, pages
+  799--826.
+\newblock 01 2020.
+
+\bibitem{Weibull_2018}
+Ay{\c s}e Kızılers{\"u}, Markus Kreer, and Anthony~W. Thomas.
+\newblock The weibull distribution.
+\newblock {\em Significance}, 15(2):10--11, 2018.
+
+\bibitem{Thurley_2011}
+Thurley K, Smith IF, Tovey SC, Taylor CW, Parker I, and Falcke M.
+\newblock Timescales of \ce{IP_3}-evoked \ce{Ca^2+} spikes emerge from
+  \ce{Ca^2+} puffs only at the cellular level.
+\newblock {\em Biophysical Journal}, 101(11):2638--2644, Dec 2011.
+
+\bibitem{Chhikara_1976}
+Raj~S. Chhikara and J.~Leroy Folks.
+\newblock Optimum test procedures for the mean of first passage time
+  distribution in brownian motion with positive drift (inverse gaussian
+  distribution).
+\newblock {\em Technometrics}, 18(2):189--193, 1976.
+
+\bibitem{Barbieri_2001}
+Barbieri R, Quirk MC, Frank LM, Wilson MA, and Brown EN.
+\newblock {C}onstruction and analysis of non-{P}oisson stimulus-response models
+  of neural activity.
+\newblock {\em The {J}ournal of {N}euroscience {M}ethods}, 105(1):25--37, 2001.
+
+\bibitem{Massey_1951}
+Frank J.~Massey Jr.
+\newblock The kolmogorov-smirnov test for goodness of fit.
+\newblock {\em Journal of the American Statistical Association},
+  46(253):68--78, 1951.
+
+\bibitem{Anderson_1954}
+T.~W. Anderson and D.~A. Darling.
+\newblock A test of goodness of fit.
+\newblock {\em Journal of the American Statistical Association},
+  49(268):765--769, 1954.
+
+\bibitem{AGNE:1}
+Tilunaite A, Croft W, Russell N, Bellamy TC, and Thul R.
+\newblock A {B}ayesian approach to modelling hetrogeneous calcium responses in
+  cell populations.
+\newblock {\em PLoS Computational Biology}, 13(10):e1005794, Oct 17.
+
+\end{thebibliography}
