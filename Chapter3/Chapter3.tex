@@ -2,376 +2,261 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-The model we have created applies methods well-known in the field of statistics, however applying these methods to our model brings unique issues/decisions. In this chapter we will discuss these complications and explain and justify the decisions we make going forward. 
+The model we have created apply methods well-known in the field of statistics, however using these methods to our model brings unique issues/decisions. In this chapter we will discuss these complications and explain and justify the decisions we make going forward. 
 
 %% ISI distribution section.   
 \section{ISI Distribution}
 
 % Intro of the importance of the ISI distribution. What it involves and what it can inform us on. Why we care.
-In this section we discuss the importance of the inter-spike interval (ISI) distribution. In Chapter 2 --- page { \color{red} XX} --- we gave an example whereby we created a ISI distribution by extending the one dimension Gamma $(\gamma, \gamma)$ distribution. The extension is performed by applying a time-rescaling method via the intensity function $x(t)$ which accounts for the time-dependence of \ce{Ca^2+} spiking. A natural question is why did we choose the one dimension Gamma distribution and is the choice of distribution important? 
+In this section we discuss the importance of the inter-spike interval (ISI) distribution. In Chapter 2 we gave an example whereby we created a time-dependent ISI distribution by extending the one dimensionial  Gamma$(\gamma, \gamma)$ distribution. The extension is performed by applying a time-rescaling method via the intensity function $x(t)$ which accounts for the time-dependence of \ce{Ca^2+} spiking. This approach can be used for a wide variety of probability distributions, such as an Inverse Gaussian or Weibull probability distributions. We will demonstrate that the choice of the original distribution is crucial to how well the model fits the \ce{Ca^2+} data. Furthermore, we will explain how to create a time-dependent ISI distribution from any probability distribution on $(0,\infty)$. Care is required in constructing these inhomogeneous ISI distributions to avoid non-identifiability issues. We will show how to circumvent this problem whilst also providing biological meaning to the intensity function used in creating these models. 
 
-To begin, let us first consider the case of stationary \ce{Ca^2+} spikes --- by this we mean spikes that depends only on the time since the last spike and not the time of the experiment. Thus the ISI distribution can be modelled as a function of the time $s$ since the last spike, whose domain is $(0,\infty)$. We can choose to model the ISI distribution $\psi (s)$ as common probability distribution such as: an Exponential distribution 
-$$ \psi (s | \alpha ) = e^{-\alpha s}$$
-  a Gamma distribution
-   $$ \psi(s| \alpha, \beta ) = e^{-\alpha(t_2-t_1)}$$,
+To begin, let us first consider the case of stationary \ce{Ca^2+} spikes --- spikes that depend only on the time since the last spike and not the time of the experiment. The ISI distribution can be modelled as a function of the time $t$ since the last spike $s$, whose domain is $(0,\infty)$. We can choose to model the ISI distribution $\psi (t,s)$ as a common probability distribution such as: an Exponential  
+$$ \psi (t,s | \alpha ) = \alpha e^{-\alpha (t-s)},$$
+  a Gamma
+   $$ \psi(t,s| \alpha, \beta ) = \frac{\beta^\alpha \left( t-s\right)^{\alpha-1} e^{-\beta(t-s)}}{\Gamma(\alpha)},$$
+   an Inverse Gaussian
+   $$ \psi(t,s| \lambda, \mu) =\sqrt{\frac{\lambda}{2 \pi (t-s)^3}} \exp \left\{- \frac{\lambda((t-s)-\mu)^2}{2\mu^2(t-s)} \right\}, $$
+   a Log Normal
+   $$\psi(t,s| \mu, \sigma) = \frac{1}{(t-s)\sigma \sqrt{2\pi}} \exp \left\{- \frac{\left( (t-s)-\mu \right)^2}{2\sigma^2} \right\}, $$
  or a Weibull distribution
-   $$ \psi(s | \lambda, k ) = e^{-\alpha}$$
+   $$ \psi(t,s | \lambda, k ) = \frac{k}{\lambda}\left( \frac{t-s}{\lambda}\right)^{k-1} e^{-\left( (t-s)/\lambda\right)^k}, $$
    
- where $\{ \alpha\}$, $\{\alpha, \beta\}$ and $\{\lambda , k\}$ the ISI parameters for distribution respectively. Each distribution, can be justified as a model for the ISI distribution. For example, if we believed spikes occur independently then the exponential distribution is suitable. 
+ where $\alpha$, $(\alpha, \beta)$, $(\lambda , \mu)$, $(\mu, \sigma)$ and $(\lambda, k)$ are the ISI parameters for each distribution, respectively. For a general distribution we denote the ISI parameters by $\theta$. Note that since we are considering stationary spikes, the distributions do not depend explicitly on the timing of spikes but the time since the last spike. This means the times $t$ and $s$ only appear as $t-s$ and we could rewrite $\psi(t,s| \theta) = \psi(t-s| \theta) = \psi(\tau| \theta) $, where $\tau$ denotes the time since the last spike.
+ 
+ %Justification of each distribution
+ We consider the Exponential distribution because it is the simplest distribution of $(0,\infty)$, moreover it describes a process which is memoryless, i.e. each spike is independent of all previous spikes. The Gamma distribution offers a natural extension to the Exponential distribution, such that the Exponential distribution is a special case of the Gamma --- where $\alpha = 1$. The Gamma distribution is an appealing candidate for the ISI distribution because it is a probability distribution for a combination of events occurring for the first time. Thus each event could be interpreted as a \ce{Ca^2+} puff, and each spike occurs the first time that $\alpha$ puffs occur.  
+ 	The Weibull distribution can also be viewed as an extension to the Exponential distribution --- the special case $k=1$ gives rise to the Exponential distribution. The Weibull distribution is often used to describe the ``time to failure'' of some component where the failure rate is proportional to a power of time. Thus, this distribution is justifiable if we believe \ce{Ca^2+} spikes depend on a power of time, i.e. if $k >1$ a spike is more likely to occur as time goes on. 
+ 	We use the Inverse Gaussian distribution because it has been used to model first passage events which contains positive drift and random drift only. Thus, since conceptually \ce{Ca^2+} spikes have been described as first passage events, the Inverse Gaussian is a suitable distribution to test. 
+ 	Finally, we also consider the  Log Normal because it is often used to model the firing rate across a population of neurons.  
+ 	 
 % Add Gamma just and Inv Gauss just. 
 
-To find which of the models best describes a \ce{Ca^2+} spike sequence we first convert the spike sequence into a sequence of $M$ ISI times $\{T_i\}_{i=1}^M$. Then to fit each model $\psi(s|\theta)$ with $\theta$ the probability distributions parameter/s we calculate the MAP estimator by 
-$$\hat \theta  = \mathrm{arg max} \left\{ \prod ^M_{i=1} \psi(T_i | \theta ) \right\}$$.
+
+%The IP distribution often serves as starting point for analysing spiking behaviour as it is the most basic statistical distribution. While the parsimony of the IP distribu- tion has undoubtedly helped in establishing a large body of mathematical results, real world data often exhibit more complex statistics. The IG distribution provides a natural extension of the IP distribution, in that it contains the IP distribution as a special case: putting γ = 1 in (5) recovers (10). The shape parameter γ endows the IG distribution with more flexibility, which has proven fruitful in numerous applications. Conceptually, spikes in general and Ca2+ spikes in particular have been described as first passage events [38]. One of the most fundamental models, which contains positive drift and random motion only, gives rise to the IIG distribution.
+
+To find which of the models best describes a \ce{Ca^2+} spike sequence we first convert the spike sequence into a sequence of $M$ ISI times $\{T_i\}_{i=1}^M$. Then to fit the model $\psi(s|\theta)$ with ISI parameter/s $\theta$, we calculate the maximum likelihood estimate (MLE) $\hat \theta$  by 
+$$\hat \theta  = \mathrm{arg max}_{\theta \in \Theta} \left\{ \prod ^M_{i=1} \psi(T_i | \theta ) \right\},$$
+where $\Theta$ is the space of all possible parameter values. 
 
 %Example using Ca spike sequence. 
-We consider a spike sequence from a HEK293 cell stimulated 
+To visualise the difference between the five stationary ISI distribution models we fit each model to the same spike sequence generated by a HEK293 cell challenged with $10\mu \mathrm{M}$ Carbachol. The cell exhibited 66 \ce{Ca^2+} spikes and we convert the spikes into a sequence of ISI times --- shown as the black ticks on the x-axis of Figure \ref{fig:ExampleISI}. Subsequently, we calculate the MLE for each of the distributions. The results are shown in the second column of Table \ref{table:Stationary}. We compare the models by examining the log likelihood at the MLE, shown as the third column in Table \ref{table:Stationary}. Superior models will have a higher log likelihood than other models. We find that the Exponential is the worst model having a log likelihood significantly lower than the other models. The Inverse Gaussian model has the largest log likelihood, implying it fits the spike sequence the best. However, the log likelihood of the Gamma is similar, thus either model could be used to describe the spike sequence.  
 
+ To explain this difference in performance we plot the probability density function  of the MLE for each model. This is shown in Figure \ref{fig:ExampleISI} where dark green, orange, pink, light green and blue correspond to the Exponential, Gamma, Inverse Gaussian, Log Normal and Weibull distributions respectively. We see that the largest proportion of spike times are centered around 40s, which is mirrored by the probability densities of all the distributions bar the Exponential. The Exponential model does not capture this due to the limitations of its shape, i.e. it must take the shape of an exponential function. We see that the Gamma and Inverse Gaussian have similar probability density functions and hence similar likelihoods. Whereas, the Log Normal and Weibull have similar centers as the Gamma and Inverse Gaussian but with narrower and wider tails respectively. Zooming in on the region between 0s and 20s we see a single ISI just before 20s. In this region we see that the Weibull's probability density is too high --- we would expect more ISIs lower the 20s --- and the Log Normal's probability density is too low --- the density at the lowest ISI time is almost zero. This illustrates why the Log Normal and Weibull do not fit the ISIs as well as the Gamma and Inverse Gaussian models. 
 
+% Table of fitting stationary distributions.
+\afterpage{%
+\clearpage
+\begin{table}[t!]
+  \begin{center}
+    \begin{tabular}{|l|l|l|}
+    \hline
+     Distribution & MLE of ISI parameter/s & Log Likelihood  \\ \hline
+     \cellcolor{col1} Exponential & $(\alpha) = 0.0221 $ & $-312.75$ \\ 
+    \cellcolor{col2} Gamma & $(\alpha, \beta) = (0.229,10.35)$ & $-261.86$ \\
+     \cellcolor{col4} Inverse Gaussian & $(\lambda,\mu) = ( 442.13, 45.22)$ & $-261.06$ \\
+     \cellcolor{col5} Log Normal & $(\mu, \sigma) = (3.762,0.312)$ & $-268.78$ \\
+     \cellcolor{col3} Weibull & $(k, \lambda) = (3.226, 50.41)$ & $-266.48$\\ \hline
+    \end{tabular}
+    \caption{The MLE and log likelihood of the MLE of each distribution fit to \ce{Ca^2+} ISIs from a HEK293 cell challenged with $10\mu \mathrm{M}$ Carbachol. The colour of the distribution matches the colour of the probability densities shown in Figure \ref{fig:ExampleISI}. }
+    \label{table:Stationary}
+  \end{center}
+\end{table} 
+
+ \begin{figure}[h!]
+   \begin{center} 
+    \subfloat{{\includegraphics[width=0.8 \linewidth]{ISI_Stationary_plot} }}
+    \end{center}     
+    \caption{Probability density functions corresponding to the MLE of: an Exponential (dark green), a Gamma (orange), Inverse Gaussian (pink), Log Normal (light green) or Weibull Distribution (blue) fit to ISIs --- shown as black ticks on the x-axis.      }
+    \label{fig:ExampleISI}
+    \end{figure}
+    \clearpage
+}
 
 %Summary of the stationary case. 
-The above shows that the choice of ISI distribution parameterisation is important, as we find different distributions are more suitable than others. 
-At this stage, one could argue to use a non-parameteric method to estimate the ISI distribution. This would indeed be a more flexible framework since the ISI distribution would not be limited to the shape of the chosen probability distribution. 
-However, it is important to note although we may find that one probability distribution best describes the \ce{Ca^2+} spikes, there may exist a better untested model. 
-In this setting another option would be to use histogramming, kernel densities, or non-parametric methods to infer the ISI distribution. 
- 
+The above example demonstrates that the choice of ISI distribution is crucial, since we found that some distributions fit the \ce{Ca^2+} ISIs better than other distributions. This is due to the fact that shape of the probability density function varies for each family of probability distributions. Thus, when considering the ISI distribution for non-stationary spike sequences we need to consider several distributions as some may  describe the \ce{Ca^2+} spikes better than others.
+
+%{\color{red} Worth mentioning other methods for stationary case? i.e could use non-parameter methods to estimate the ISI.}
+%At this stage, one could argue to use a non-parametric method to estimate the ISI distribution. This would indeed be a more flexible framework since the ISI distribution would not be limited to the shape of the chosen probability distribution. 
 
 %Back to our model.
-Returning to our model, we can generalise any probability distribution on $(0,\infty)$ to create a non-stationary ISI distribution. To generalise the distribution $\psi(s|\theta)$ we rescale time via the positive intensity function $x(t)$. In this new time 
-$$ p(s,t |x,\theta) = x(t)\psi (\int^t_s x(u)du|\theta) $$.
+Returning to our model, we want to create non-stationary ISI distributions by generalising the distributions --- the Exponential, Gamma, Inverse Gaussian, Log Normal and Weibull --- described in the stationary case above. 
 
-Thus, by applying the transformation we create the (inhomogenous) Gamma
+% First the exponential distribution.
+ et us begin with the Exponential distribution. This differs from the other considered distributions because it only has a single parameter $\alpha$. A point process with identical Exponential$(\alpha)$ ISI distributions is known as a Poisson process with rate $\alpha$ because the  number of events in the interval $[s,t]$ is a Poisson random variable with mean $\alpha (t-s)$. The non-stationary generalisation of the Poisson process is called an inhomogeneous Poisson process, where the parameter $\alpha$ is replaced with a rate function $\alpha(t)$. Thus, we shall call the inhomogeneous  Exponential ISI distribution
+$$ p(t,s|\alpha) = \alpha(t) \exp \left\{ -\int^t_s \alpha(u) du \right\}. $$
 
+%Other distributions - General.
+ To generalise the distribution $\psi(t,s|\theta)$ we rescale time via the positive intensity function $x(t)$. This maps the original experiment time $r$ to a new time $z$ by
+ $$ z(t) =\int^r_0 x(u) du. $$
+ Thus by the transformation of variables we generalise the stationary ISI distribution $\psi(t,s|\theta)$ into a non-stationary ISI distribution $p(t,s| x, \theta)$ by
+\begin{align*}
+	p(t,s |x,\theta) &= \frac{dz}{dt} \psi (z(t),z(s)|\theta), \\
+	&= \frac{dz}{dt} \psi (z(t) - z(s)|\theta),\\
+	&= x(t) \psi (\int^t_0 x(u) du - \int^s_0 x(u) du|\theta), \\
+	&= x(t)\psi (\int^t_s x(u)du|\theta),\\
+	&= x(t)\psi (X(s,t)|\theta),
+\end{align*} 
+where $X(s,t) = \int^t_s x(u)du.$
+
+We apply the transformation to the Gamma, Inverse Gaussian, Log Normal and Weibull distributions. We obtain the  inhomogeneous Gamma ISI
 $$
- p(y_i, y_{i-1}| x, \alpha, \beta) =  \frac{\beta x(y_i)}{\Gamma ( \alpha )} \big[ \beta X(y_{i-1} , y_i ) \big]^{\alpha -1} \exp( - \beta X(y_{i-1} , y_i )  ),
+ p(t,s| x, \alpha, \beta) =  \frac{\beta x(t)}{\Gamma ( \alpha )} \big[ \beta X(s,t) \big]^{\alpha -1} \exp \left\{ - \beta X(s,t)  \right\},
 $$
- the inhomogenous
-
-
-% Non identifiability. 
-
-
-In our model we consider time-dependent \ce{Ca^2+} spiking. In practice, this is done by extending the concept of modelling the ISI distribution with a known probability distribution via the time-rescaling theorem. We begin by choosing a probability distribution $p_{\mathrm{stat}}$ on $(0,\infty)$ with parameter/s $\theta$. We then introduce the intensity function $x(t)$ defined on the experiment time $[0,T]$. By rescaling the ISI 
-
-Recall, in our model we are considering time-dependent \ce{Ca^2+} spiking. Thus we generalise the ISI distribution via the time-rescaling theorem. Recall from Chapter 2 we begin by choosing a probability distribution $p_{\mathrm{orig}}(t_1,t_2 | \theta)$. 
-
-
-To stress the importance of the choice of ISI distribution suppose we have given a spike sequence containing 35 spikes over 2800s. Assuming the spiking rate is constant we expect the mean time between spikes to be 80s. Suppose we chose the an exponential as the ISI distribution. 
-  \begin{figure}[t]
-   \hrulefill
-   \begin{center} 
-    \subfloat{{\includegraphics[width=0.8 \linewidth]{ExampleISI} }}
-    \end{center}     
-    \caption{Example ISI distributions.   }
-    \label{fig:ExampleISI}
-    \hrulefill
-    \end{figure}
-
-In figure \ref{fig:ExampleISI} we 
-
-% Summary of how we generalise to allow for non-stationary spikes. With justification why we want to do this. 
-In the above example the we assumed that the spiking rate is constant, however our model is based on the assumption that the spiking rate varies over time. Thus, figure \ref{fig:ExampleISI} is a snapshot of how the ISI distribution looks at a single moment in time. 
-To model the time-heterogeneity we transform the original probability distribution via the time-rescaling theorem, as described in Chapter 2. To summarise this approach we begin fixed distribution $p$ with parameters $\theta$ to describe the ISI distribution in the stationary setting. To generalise for non-stationary spikes we apply the transform to this distribution and obtain the inhomogeneous ISI distribution which depends on the parameters $\{\theta, x\}$, where $x$ is the intensity function. 
-
-\begin{align} \label{eq:5}
-g(z_i,z_{i+1} | x) =& \frac{dz}{dt} \bigg\rvert_{y_{i+1}} p(z_i, z_{i+1}),  \\
-=& x(y_{i+1}) p(z_i, z_{i+1}). \label{eq:5b}
-\end{align}
-
-----%Example of the weibull dist. 
-
-
-% Consider previous results and which models were considered. Pros and cons. 
-
-% How can we extend to consider more ISI distributions.
-Our aim is to extend the number of ISI distributions used to model \ce{Ca^2+} spikes, which the intention of confirming that the Gamma distributions performs best or finding a distribution that better describes \ce{Ca^2+} spikes. 
-
-% Option 1 include more base probability dists. Why these distributions? 
-We first extend the number of ISI distributions considered by also using a Weibull and Log Normal distribution. The motivation behind these distributions are ... 
+ the inhomogeneous Inverse Gaussian
+ $$
+  p(t,s | x,\lambda, \mu) =  x(t) \bigg( \frac{\lambda}{2\pi X(s,t)^3} \bigg)^{0.5} \exp \left\{ -\frac{\lambda(X(s,t)-\mu)^2}{2 \mu ^2 X(s,t)} \right\},
+ $$
  
-% Option 2. Note that the previous results only considered 1-D dists of G and IG. Can we generalise? 
-The second approach is by generalising the current distributions. Consider the ISI distributions used by Titunaite et al, these are inhomogeneous versions of Gamma$(\gamma, \gamma)$ and Inverse Gaussian $(\alpha,1)$ distributions. Hence they are inhomogeneous versions of one-parameter distributions. Thus, a natural question is why did they choose one-parameter version of these distributions and can we generalise these distributions to their two-parameter counterparts?  
-
-% Non identifiability of generalised models. 
-We begin by considering the Gamma distribution 
-$$ 100$$ 
-transforming via the time-rescaling theorem gives the inhomogeneous two-parameter Gamma distribution as 
-\begin{equation*}
- p(y_i, y_{i-1}| \alpha, \beta, x(t)) =  \frac{\beta x(y_i)}{\Gamma ( \alpha )} \big[ \beta X(y_{i-1} , y_i ) \big]^{\alpha -1} \exp( - \beta X(y_{i-1} , y_i )  ),
- \end{equation*}
- 
- One way to visualise this, is that the intensity function replaces one of the parameters of the original distribution. 
-
-% Choosing the version of each model. Why? 
-	
-%Figure of comparing histograms with different parameterisations. 
-  \begin{figure}[t]
-   \hrulefill
-   \begin{center} 
-    \subfloat{{\includegraphics[width=0.8 \linewidth]{CompareHist} }}
-    \end{center}     
-    \caption{Histograms comparing the intensity to histograms of 1000 simulated spike sequences. The light and dark histograms correspond to simulating spikes with ISI distributions Gamma(1.8,1.8) and Gamma(3.6,1.8) respectively.  }
-    \label{fig:CompareHist}
-    \hrulefill
-    \end{figure}
-    
-% Possible further extensions. Include refractory explicitly. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-The ISI distribution is an important piece of the \ce{Ca^2+} spiking mechanism. In fact, if we assumed the spiking rate was stationary the ISI distribution would fully describe the \ce{Ca^2+} spikes. 
-
-It is important to note that apriori we have little idea what the ISI distribution will look like. 
-
-
-
-
-
-
-
-
-%An integral part of our model is the ISI distribution. The ISI distribution informs characterises how spike times are related to each other etc. A priori there is no information on what ISI distribution will best describe the \ce{Ca^2+} spikes. Any probability distribution on $[0,\infty )$ could be used to describe the ISI distribution. 
-In our methodology we begin by choosing a probability distribution $p$ on $[0,\infty )$ --- such as a exponential or Gamma distribution. Then to allow for heterogeneity we apply the time rescaling theorem to generate a probability model dependent on the intensity function $x(t)$ and probability distribution $p$ with parameters $\theta$. In Chapter 2 we described how to infer the model parameters when the chosen probability distribution was a Gamma distribution. However, there is no prior information suggesting that the Gamma is the best distribution to use. 
-
-
-%Discussion of previously used ISI distributions. 
-However, Titunate et al \cite{} have tested 3 probability distribution to HEK293 cells stimulated with Carbohol. The ISI distributions they tested were the 
-%In Chapter 2 we assumed that the ISI distribution follows an inhomogeneous gamma distribution as detailed in equation ---. This is the model that was found to perform best by Titulane et al \cite{} when applying similar methods to HEK293 cells stimulated with Carbohol. In their paper they tested three potential ISI distributions, which they named the
- (inhomogeneous) Poisson 
-$$
-p(y_i,y_{i-1} | x) = x(y_i) e^{-X(y_i,y_{i-1})} ,
-$$
-
-the (inhomogeneous) Gamma
-
-$$
-p(y_i,y_{i-1} | x,\gamma) = \frac{\gamma x(y_i)}{\Gamma(\gamma)}\left[\gamma X(y_i,y_{i-1}) \right]^{\gamma -1} e^{-\gamma X(y_i,y_{i-1})},
-$$
-
-and the (inhomogeneous) Inverse Gaussian
-
-$$
-p(y_i,y_{i-1} | x,\alpha) = \frac{x(y_i)}{\sqrt{2 \pi X(y_i,y_{i-1})^3}} \exp \left\{ -\frac{\left( X(y_i,y_{i-1}) - \alpha \right)^2}{2 \alpha^2 X(y_i,y_{i-1}) } \right\}.
-$$
-The inhomogeneous Poisson is the simplest inhomogeneous point process, based on an exponential ISI probability distribution. Titunate et al found that the inhomogeneous Gamma distribution preformed best out these ISI distributions by comparing QQ and KS plots --- see chapter 5? for a discussion on how these methods compare ISI distributions. 
-
-Clearly, this is not an exhaustive list of all potential probability distributions that can explain the ISI distribution. Thus, it is possible that a different distribution may describe the \ce{Ca^2+} spikes equally well or better than the Gamma ISI distribution above. 
-
-Recall when describing the model we begin by first considering a homogeneous process. We choose the probability distribution $p$ on $[0,\infty)$, with parameters $\theta$ to describe the ISI distribution. Then we extend to a time-dependent model by applying the time-rescaling theorem where in the new time  
- 
-The first distribution is called the inhomogenesous Poisson because the exponential distribution leads to the definition of a Poisson process. This ISI distribution    These distributions were chosen because ... . However, this is clearly not a list of all possible distributions, and it is possible that another non-tested distribution would give a better fit. Thus, we will extend the number of ISI distributions to be considered to include a Log Normal distribution and a Weibull distribution. We want to consider these distributions because ... . 
-
-%Extend by generalising distributions
-
-% Decide on the parameterisation we want.
-Above we have seen that 
-
-    
-Notice that the IG and IIG distributions are generalisations of one-parameter Gamma and Inverse Gaussian distributions, namely Gamma $(\gamma, \gamma)$ and InverseGaussian$(\alpha,1)$.
-
-By the introduction of the intensity function we can see that the above distributions are generalisations of one-parameter Gamma and Inverse Gaussian distributions, namely Gamma$(\gamma, \gamma)$ and InverseGaussian$(-,-)$. A natural question would be to ask whether we can generalise further and allow for the distributions two-parameter versions, such as the Gamma$(\alpha, \beta)$. However, by generalising the ISI distribution we create non-identifiability issues, where by scaling the ISI parameters with the intensity function we 
- 
-\subsection{Non-Identifiability issues with two parameter ISI distributions} 
-To begin we will consider the Gamma distribution. Thus suppose the ISI distribution is defined by
-
-\begin{equation}
- p(y_i, y_{i-1}| x, \alpha \beta) =  \frac{\beta x(y_i)}{\Gamma ( \alpha )} \big[ \beta X(y_{i-1} , y_i ) \big]^{\alpha -1} \exp( - \beta X(y_{i-1} , y_i )  ),
- \end{equation}
- 
- where 
-  \begin{equation}
-X(s,t) = \int^{t}_{s} x(u) du , \qquad \text{for any } s,t \in [0,T].
-\end{equation}
-
-
- 
-\subsection{Choosing one-parameter ISI distributions}
-Thus, we for each of the generalised two-parameter ISI distributions we need to choose a parameterisation to remove the non-identifiability issues. 
-
-Thus, the ISI distributions we will consider are the following:
-
-%GAMMA
-\subsection{Gamma distribution}
-Throughout we have assumed that the Gamma ISI distribution is as follows 
-\begin{equation}
- p(y_i, y_{i-1}) =  \frac{\gamma x(y_i)}{\Gamma ( \gamma )} \big[ \gamma X(y_{i-1} , y_i ) \big]^{\gamma -1} \exp( - \gamma X(y_{i-1} , y_i )  ).
- \end{equation}
- 
- Which one can see a generalisation of a Gamma$(\gamma,\gamma)$. We have used this distribution because it was used in \cite{}. However, can we generalise further and consider a Gamma$(\alpha,\beta)$ ISI distribution? The answer is no. This is because the parameters $x$ and $\beta$ are non-identifiable.  \\
- 
-{\color{blue}
-Suppose our ISI interval is given by the following $(\alpha, \beta )$ Gamma distribution. 
-
-\begin{equation}
- p(y_i, y_{i-1}) =  \frac{\beta x(y_i)}{\Gamma ( \alpha )} \big[ \beta X(y_{i-1} , y_i ) \big]^{\alpha -1} \exp( - \beta X(y_{i-1} , y_i )  ),
- \end{equation}
- 
- where 
-  \begin{equation}
-X(s,t) = \int^{t}_{s} x(u) du , \qquad \text{for any } s,t \in [0,T].
-\end{equation}
- 
- Now we will show that this is equivalent to a $(\gamma, \gamma)$ Gamma distribution by scaling the intensity function.\\
- 
- Let $\gamma = \alpha$ and $\kappa = \frac{\beta}{\alpha}$, thus giving $\beta = \gamma \kappa$. Substitute into (2) gives
- 
- \begin{equation}
- p(y_i, y_{i-1}) =  \frac{\gamma \kappa x(y_i)}{\Gamma ( \gamma )} \big[ \gamma \kappa X(y_{i-1} , y_i ) \big]^{\gamma -1} \exp( - \gamma \kappa X(y_{i-1} , y_i )  ).
- \end{equation}
- 
- Now define new intensity function by $\tilde x = \kappa x$, hence giving
- 
-   \begin{equation}
-\tilde X(s,t) = \int^{t}_{s} \tilde x(u) du = \int^{t}_{s} \kappa x(u) du =  \kappa X(s,t)  , \qquad \text{for any } s,t \in [0,T].
-\end{equation}
-
-Put this into (3) gives
- \begin{equation}
- p(y_i, y_{i-1}) =  \frac{\gamma  \tilde x(y_i)}{\Gamma ( \gamma )} \big[ \gamma \tilde X(y_{i-1} , y_i ) \big]^{\gamma -1} \exp( - \gamma \tilde X(y_{i-1} , y_i )  ),
- \end{equation}
- 
- which we see is a $(\gamma, \gamma)$ Gamma distribution. \\
- 
- Hence, where we have introduced a two-variable Gamma distribution we cannot retrieve initial choices of variables. I.e $\beta$ is replaced as a variable by the intensity function. The choice of having $\alpha = \beta$ is a sensible choice as this allows the expected number of spikes to not depend on the ISI parameters and only depends on $x$.
- }
- 
- %Inverse Gaussian
- \subsection{Inverse Gaussian distribution}
- Similarly we have not considered the full generalised Inverse Gaussian ISI distribution
- \begin{equation}
- p(y_i, y_{i-1}) =  x(y_i) \bigg( \frac{\lambda}{2\pi X(y_{i-1} , y_i )^3} \bigg)^{0.5} \exp \bigg[-\frac{\lambda(X(y_{i-1} , y_i )-\mu)^2}{2 \mu ^2 X(y_{i-1} , y_i )} \bigg].
- \end{equation}
- 
- However, we again get non-identifiable variables, in this case if we multiple all the parameters by a constant we get an identical distribution. \\
- 
- {\color{blue}
- Suppose we have an Inverse Gaussian ISI distribution with parameters $(\lambda,\mu)$ and intensity function $x$. We want to show this is identical to an IG$((k\lambda,k\mu))$ with intensity $kx$ for any constant $k$. Firstly, note that the constant comes out the front of of the integral of the intensity function. 
- 
-    \begin{equation}
- \int^{t}_{s} \kappa x(u) du = \kappa \int^{t}_{s} x(u) du = \kappa X(s,t)  , \qquad \text{for any } s,t \in [0,T].
-\end{equation}
-
-Hence, we get
-  \begin{align}
- p(y_i, y_{i-1}|kx,k\lambda,k\mu) &=  kx(y_i) \bigg( \frac{k\lambda}{2\pi (kX(y_{i-1} , y_i ))^3} \bigg)^{\frac{1}{2}} \exp \bigg[-\frac{k\lambda(kX(y_{i-1} , y_i )-k\mu)^2}{2 (k\mu) ^2 kX(y_{i-1} , y_i )} \bigg],\\
- &=  kx(y_i) \bigg( \frac{1}{k^2}\frac{\lambda}{2\pi X(y_{i-1} , y_i )^3} \bigg)^{\frac{1}{2}} \exp \bigg[-\frac{k\lambda(k(X(y_{i-1} , y_i )-\mu))^2}{2 k^3\mu ^2 X(y_{i-1} , y_i )} \bigg],\\
-  &=  \frac{k}{k}x(y_i) \bigg(\frac{\lambda}{2\pi X(y_{i-1} , y_i )^3} \bigg)^{\frac{1}{2}} \exp \bigg[-\frac{k^3}{k^3}\frac{\lambda(X(y_{i-1} , y_i )-\mu)^2}{2\mu ^2 X(y_{i-1} , y_i )} \bigg],\\
- &=  x(y_i) \bigg( \frac{\lambda}{2\pi X(y_{i-1} , y_i )^3} \bigg)^{\frac{1}{2}} \exp \bigg[-\frac{\lambda(X(y_{i-1} , y_i )-\mu)^2}{2 \mu ^2 X(y_{i-1} , y_i )} \bigg],\\
- &= p(y_i, y_{i-1}|x,\lambda,\mu) \qquad \qquad \text{as required.}
- \end{align}
- }
- 
- %Log Normal
- \subsection{Log Normal distribution}
- Next we shall consider the full Log Normal distribution
- 
- \begin{equation}
- p(y_i, y_{i-1}) = \frac{x(y_i)}{X(y_{i-1} , y_i ) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log X(y_{i-1} , y_i ) - \mu)^2}{2\sigma^2} \right\}
- \end{equation}
- 
- However as in the above two cases we get non-identifiable variables. In this case, if we multiply the intensity by a factor of $\kappa$ this is identical to subtracting $\log \kappa$ to $\mu$.\\
-  {\color{blue}
-   Suppose we have an Log Normal ISI distribution with parameters $(\mu,\sigma)$ and intensity function $\kappa x$. We want to show this is identical to an LN$((\mu + \log \kappa,\sigma))$ with intensity $\kappa x$ for any constant $\kappa$.
-   
-     \begin{align}
- p(y_i, y_{i-1}|\kappa x,\mu,\sigma) &= \frac{\kappa x(y_i)}{\kappa  X(y_{i-1} , y_i ) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log\kappa  X(y_{i-1} , y_i ) - \mu)^2}{2\sigma^2} \right\},\\
- &=   \frac{ x(y_i)}{  X(y_{i-1} , y_i ) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log\ X(y_{i-1} , y_i ) + \log \kappa - \mu)^2}{2\sigma^2} \right\}\\
- &=   \frac{ x(y_i)}{  X(y_{i-1} , y_i ) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log\ X(y_{i-1} , y_i )  - (\mu - \log \kappa))^2}{2\sigma^2} \right\}\\
- &= p(y_i, y_{i-1}|x,\mu - \log \kappa,\sigma) \qquad \qquad \text{as required.}
- \end{align}
-  }
+ the inhomogeneous Log Normal 
+ $$
+  p(t,s| x, \mu, \sigma ) = \frac{x(t)}{X(s,t) \sigma \sqrt{2 \pi}} \exp \left\{ -\frac{(\log X(s,t) - \mu)^2}{2\sigma^2} \right\},
+ $$
   
-   %Weibull
- \subsection{Weibull distribution}
- Next we shall consider the Weibull distribution
- 
- \begin{equation}
- p(y_i, y_{i-1}|k,\lambda) = \frac{x(y_i)k}{\lambda} \left( \frac{X(y_{i-1} , y_i )}{\lambda} \right)^{k-1} \exp \left\{ -\left( \frac{X(y_{i-1} , y_i )}{\lambda} \right)^k \right\}
- \end{equation}
- 
- However again we get non-identifiable variables. In this case, if we multiply the intensity by a factor of $m$ this is identical to dividing $\lambda$ by $m$. \\
-  {\color{blue}
-   Suppose we have an Weibull ISI distribution with parameters $(k,\lambda)$ and intensity function $m x$. We want to show this is identical to an Weibull$(k,\frac{\lambda}{m})$ with intensity $x$ for any constant $m$.
-   
-     \begin{align}
- p(y_i, y_{i-1}|mx, k, \lambda) &= \frac{mx(y_i)k}{\lambda} \left( \frac{mX(y_{i-1} , y_i )}{\lambda} \right)^{k-1} \exp \left\{ -\left( \frac{mX(y_{i-1} , y_i )}{\lambda} \right)^k \right\} \\
- &=\frac{x(y_i)k}{\lambda/m} \left( \frac{X(y_{i-1} , y_i )}{\lambda/m} \right)^{k-1} \exp \left\{ -\left( \frac{X(y_{i-1} , y_i )}{\lambda/m} \right)^k \right\} \\ 
- &= p(y_i, y_{i-1}|x,k, \lambda/m) \qquad \qquad \text{as required.}
- \end{align}
-  }
- 
-% \section{Why we choose the ISI distribution to have mean 1}
-% Throughout we have defined $x(t)$ to be the intensity function, this means that at any time $t$ $x(t)$ is the rate of spikes. Hence $X(t , s)$ is the expected number of spikes in the interval $[t,s]$. Suppose we choose the ISI distribution to follow the probability distribution $p(t|\theta)$. 
-% %This probability distribution is used to define the stochastic structure of the spike sequence. 
-%  We then want to apply intensity-rescaling transformation, to allow for inhomogeneous spikes, i.e $t \rightarrow X(t,0)$. After the transformation we get:
-%  
-%      \begin{equation}
-% f_t(t_k|t_{k-1}) = x(t_k) p(X(t_k,t_{k-1}) | \theta)
-%\end{equation}
-%
-%Let $\mu$ be the mean of the ISI probability distribution prior to the intensity rescaling. 
-%We will show that this is the case for constant intensity, $x(t)=\kappa$, we require $\mu$ to be 1.
-%
-%  \begin{align}
-%\mathbb{E}[\text{time to spike}] &= \int^{\infty}_0 t x(t_k) p(X(t,0) | \theta)\\
-%&= \int^{\infty}_0 t \kappa p(\kappa t | \theta) dt\\
-%&= \int^{\infty}_0 t \kappa p(\kappa t | \theta) dt\\
-%&= \int^{\infty}_0 z p(z | \theta) \frac{dz}{\kappa}\\
-%&= \frac{1}{\kappa} \int^{\infty}_0 z p(z | \theta) dz\\
-%&= \frac{\mu}{\kappa} \\
-% \end{align}
-% 
-%Hence the expected number of spikes in the interval $[s,t]$ will be $\frac{T\kappa}{\mu}$. Thus, we require $\mu$ to be $1$ to maintain the definition of $x$.\\
-%
-%If we want to generalise the concept to time varying intensity $x(t)$, we first extend the constant function to piecewise constant. Suppose we are interested in the number of spikes in the interval $[t,s]$, and in the interval we have the partition $t=P_0 <P_1< \dots < P_{n-1} < P_n = s$ and corresponding heights $h_1, h_2, \dots , h_{n-1}$. Then using the above for a constant function we get
-%
-%\begin{equation}
-%\mathbb{E}[\text{spikes in [t,s]}] = \frac{\sum^{n-1}_{i=1} h_i(P_{i+1} - P_i)}{\mu}
-%\end{equation} 
-%
-%Then any function can approximated as the limit of piecewise constant functions and hence we have 
-%\begin{equation}
-%\mathbb{E}[\text{spikes in [t,s]}] = \frac{\int^{t}_s x(u) du}{\mu}
-%\end{equation} 
-%
-%Which is exactly what we see in figure 1, when we the choose the ISI distribution to have mean not equal to 1.
-%
-%We want to have the property that $x(t)$ corresponds to the probability of \ce{Ca^2+} spiking independent of the history of the \ce{Ca^2+} spike sequence.
-% That is to say if there are $N$ identical spiking cells, then $Nx(t)$ is the expected number of spikes at time $t$. To visualise the concept we simulate 500 spike sequences from identical distributions and then bin the spikes to create a histogram of the spikes. 
-%
-%   \begin{figure}[t]
-%   \begin{center}
-%    \includegraphics[scale=0.4]{Hist_example1} 
-%    \caption{Histogram of 500 spikes generated from a Gamma ISI distribution, with $x(t) = \frac{1}{2} (\cos(\frac{t}{2})+1)$. Where the parameters for blue, orange and light orange are $(\alpha,\beta)  = (2,4)$, $(4,4)$ and $(8,4)$ respectively. }
-%    \end{center}
-%    \hrulefill
-%    \end{figure}
-%    
-%    \subsection{Constant intensity function}
-%    Now let us take a step back and assume that the intensity function is constant $x(t) = \kappa$. We want to visualise how the different ISI distributions look when we fix the mean and variance, we look at 3 ISI distributions. Namely, Gamma, Inverse Gaussian and the Log Normal distributions. We get the following for the mean and variance of each of the distributions
-%    
-%\begin{align}
-%& = 1/\kappa \qquad(\text{Gamma}) \\
-%\mu \quad \quad&= \kappa  \qquad(\text{Inverse Gaussian}) \\
-%&= 1/\kappa \qquad(\text{Log Normal}) \\
-%&\text{} \\
-%& = 1/(\kappa ^2 \gamma) \qquad(\text{Gamma}) \\
-%\sigma ^2 \quad \quad&= 1/(\kappa ^2 \lambda) \qquad  (\text{Inverse Gaussian}) \\
-%&= e^{2h}/\kappa^2\qquad (\text{Log Normal}) 
-%\end{align}    
+ and the inhomogeneous Weibull
+$$
+ p(t,s|x,k,\lambda) = \frac{x(t)k}{\lambda} \left( \frac{X(s,t)}{\lambda} \right)^{k-1} \exp \left\{ -\left( \frac{X(s,t)}{\lambda} \right)^k \right\}.
+ $$
+ Thus, each inhomogeneous ISI distribution has $x(t)$ as an additional parameter. The parameter set of the inhomogeneous Gamma, Inverse Gaussian, Log Normal and Weibull are $(x,\alpha,\beta)$, $(x,\lambda,\mu)$, $(x,\mu,\sigma)$ and $(x,k,\lambda)$ respectively.
+     
+% Non identifiability. 
+We first need to check if each parameter in the ISI distribution is identifiable. This means that we can theoretically learn the true values of the parameters if given an infinite number of observations. Moreover, a model is non-identifiable if two distinct parameterisations lead to identical probability distributions. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% END %%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Begin by considering the Gamma ISI distribution. Notice that $\beta$ is always multiplied by either a factor of $x(t)$ or $X(s,t)$. Thus, it appears that we cannot untangle $\beta$ and the intensity function $x(t)$.  Indeed, consider the Gamma distribution with parameters $(ax,\alpha,\beta /a)$ with $a>0$ a constant, where we have varied the values of $\beta$ and $x$ but maintained the value of their product. Rearranging we get
+
+ \begin{align*}
+ p(t,s|ax, \alpha, \beta/a) &=  \frac{(\beta/a) ax(t)}{\Gamma ( \alpha )} \big[ (\beta/a) \int^t_s a x(u) du \big]^{\alpha -1} \exp\left\{ - (\beta/a) \int^t_s a x(u) du  \right\}, \\
+ &=  \frac{\beta x(t)}{\Gamma ( \alpha )} \big[ (\beta/a) a\int^{t}_{s}  x(u) du \big]^{\alpha -1} \exp \left\{ - (\beta/a) a\int^{t}_{s}  x(u) du  \right\}, \\
+  &=  \frac{\beta x(t)}{\Gamma ( \alpha )} \big[ \beta X(s,t) \big]^{\alpha -1} \exp\left\{ - \beta X(s,t)  \right\},\\
+  &= p(t,s|x, \alpha, \beta).
+ \end{align*}
+Thus, we find two parameterisations with identical probability distributions and the Gamma ISI distribution is non-identifiable. Furthermore, all the other considered ISI distributions are also non-identifiable. This is shown in Table \ref{table:Non-ident}, where each distribution is given a pair of unique parameters that give rise to identical distributions --- for proof these parameter sets lead to identical distributions see Appendix {\color{red} XX}. 
+
+%Maybe some line about the intensity replacing one of the parameters from the original distribution. 
+
+% Table of Non-identifability
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular}{|l|l|l|}
+    \hline
+     Distribution & Base parameters & Identical to ..  \\ \hline
+     Gamma & $(x, \alpha, \beta)$ & $(a x, \alpha, \beta/a)$ \\
+     Inverse Gaussian & $(x,\lambda,\mu)$ & $(a x, a\lambda, a \mu)$ \\
+     Log Normal & $(x,\mu, \sigma)$ & $(a x, \mu + \log a, \sigma )$ \\
+     Weibull & $(x, k, \lambda)$ & $(a x, k, a \lambda)$\\ \hline
+    \end{tabular}
+    \caption{Parameterisations of the inhomogeneous ISI distributions which lead to non-identifiability, where $a>0$ is a constant. }
+    \label{table:Non-ident}
+  \end{center}
+\end{table} 
+
+To resolve the non-identifiability issues we need to constrain the ISI distributions. One method for doing this is restricting the stationary distributions we used to create the inhomogeneous ISI distributions. For example we could restrict the stationary Gamma distribution from two parameters $(\alpha, \beta)$ to one parameter $\gamma$ by setting $\alpha = \beta = \gamma $ or $\alpha =\gamma$ and $\beta =\gamma^2$. However, there are infinitely many possibilities for restricting the stationary ISI distribution. Thus we want to find a clever way to restrict these distributions whilst giving meaning to the remaining parameters.   
+
+Recall that the intensity function is a mathematical construct that allows time-dependent spiking processes to be factorised into individual ISIs. Thus, it would be advantageous to restrict the parameterisation in such a manner to give some meaning to the intensity function. Furthermore, it would be beneficial if the intensity function had the same meaning for each ISI distribution. In this case, after fitting, say, the Gamma and Inverse Gaussian model to \ce{Ca^2+} spikes we can check to see if intensity functions of both models are similar, which would show consistency between the models.   
+
+Taking this into account, we choose to restrict the ISI distributions by setting the mean to one in the corresponding stationary ISI distributions. With this condition the intensity function coincides with the mean spike rate irrespective of the chosen stationary ISI distribution, i.e. Gamma, Inverse Gaussian, etc. 
+
+% Example with Gamma to show how mean 1 = mean spike rate using histogramming. 
+To visualise the impact of setting the mean of the stationary ISI distribution to one, we simulate spike sequences from a variety of inhomogeneous models. The intensity function $x(t)$ is the same for each model --- the red line in Figure \ref{fig:CompareHist}(A) and (B) --- and is drawn from a GP. The first model has a Gamma ISI distribution with parameters $\alpha = 1.8$ and $\beta = 1.8$, and the second model also has Gamma ISI distribution but with the parameters $\alpha = 3.6$ and $\beta = 1.8$. Recall that the mean of a Gamma distribution is $\alpha / \beta$, hence the mean for the first and second models are one and two respectively. We simulate 1000 spike sequences from both models and bin the spikes to calculate the mean spiking rate --- this is shown as the light and dark grey boxes in Figure \ref{fig:CompareHist}(A) for the first and second model respectively.  We find that only the spikes from the first model have mean spiking rate equalling the intensity function. In fact, the second model's mean spiking rate is equal to half the intensity function, shown as the red dotted line. Consequently, we find that only the Gamma ISI distribution with mean one has its mean spike rate coincide with the intensity function. 
+
+%To visualisethe intensity function coinciding with the mean spike rate, we draw 1000 simulated spike sequences from two different models. Both models have the same intensity function --- solid red line in Figure \ref{fig:CompareHist}(A) --- and a Gamma ISI distribution. However, the parameters values of the Gamma distribution differs in each model with the first having parameters $(1.8,1.8)$ and the second $(3.6,1.8)$. Thus the first model's parameterisation has mean one whereas the second model has mean two. By binning the resultant spike times of each model we find the mean spike rate --- this is shown by the light and dark grey boxes for the first and second model respectively in Figure \ref{fig:CompareHist}(A). We find that for Gamma$(1.8,1.8)$ model the intensity distribution accurately describes the mean spike rate. However, the mean spike rate for the Gamma$(3.6,1.8)$ is half of the inputted intensity --- as shown by the dotted red line which is equal to half the intensity function. Thus by, fixing the mean of the original ISI distribution to one the intensity distribution describes the mean spiking rate. 
+
+%Figure of comparing histograms with different parameterisations. 
+     \begin{figure}[t]
+    \begin{center}
+	\begin{subfloat}{
+	\includegraphics[width = 0.68\linewidth]{CompareHist}}
+	\end{subfloat}
+	\begin{subfloat}{
+	\includegraphics[width = 0.68\linewidth]{CompareHist_Dist}}
+	\end{subfloat}	
+		\caption{Comparing the intensity function --- the red line in both plots --- to histograms of 1000 simulated spike sequences. In (A) the light and dark boxes correspond to spikes generated from the model with Gamma ISI distributions with parameters Gamma(1.8,1.8) and Gamma(3.6,1.8) respectively. In (B) the spike sequences are simulated from a Gamma(1.8,1.8) and an Inverse Gaussian (1.8,1) resulting in the histograms in blue and red respectively, whose overlap is purple.  }
+\label{fig:CompareHist}
+\end{center}
+\end{figure}
+
+
+    
+    
+%Example to compare multi dists?
+Furthermore, we consider a third model with the same intensity function but whose ISI distribution follows an Inverse Gaussian with parameters $\lambda=1.8$ and $\mu =1$, which has mean one. We simulate 1000 spike sequences from this model. In figure \ref{fig:CompareHist}(B), we compare the mean spike rate of this model with the first model ---  Gamma ISI distribution with mean one. The red and blue boxes correspond to binning the spike sequences from the Inverse Gaussian and Gamma models respectively. The overlap of the boxes is coloured purple. We see that the mean spike rate from both models are near identical. This shows that the intensity function of both models correspond to the mean spike rate, thus allowing us to compare intensity functions from models using different underlying probability distributions. 
+
+%Furthermore, we can simulate 1000 spike sequences from the Inverse Gaussian ISI distribution with identical intensity function as above and parameters $(1.8,1)$, whose mean is one. In figure \ref{fig:CompareHist}(B) we compare the histograms of the simulated spike sequences from the Inverse Gaussian (red) and Gamma (blue) models, we see that the histograms are close to identical --- the overlap is coloured purple --- and the mean spike rate is the same for both models and equal to the intensity function. 
+
+Henceforth, we use inhomogeneous ISI distributions generalised from stationary distributions with mean one, the parameterisations are shown in Table \ref{table:oneparam}. 
+
+% Table of one-parameter distributions
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular}{|l|l|l|}
+    \hline
+     Distribution & Original parameters & New parameter  \\ \hline
+     Gamma & $(\alpha, \beta)$ & $(\gamma, \gamma)$, $\gamma >0$  \\
+     Inverse Gaussian & $(\lambda,\mu)$ & $(\lambda, 1)$, $\lambda > 0$  \\
+     Log Normal & $(\mu, \sigma)$ & $(-\mu, \sqrt{2\mu},)$, $\mu > 0$   \\
+     Weibull & $(k, \lambda)$ & $(k,\frac{1}{\Gamma(1+1/k)})$, $k > 0$ \\ \hline
+    \end{tabular}
+    \caption{One parameter version of the stationary ISI distributions with mean one. }
+        \label{table:oneparam}
+  \end{center}
+\end{table} 
+
+Applying the time-rescaling transformation to the new restricted one-parameter version of the stationary distributions leads to the following inhomogeneous ISI distributions: the Gamma ISI distribution
+$$
+ p(t,s| x, \gamma) =  \frac{\gamma x(t)}{\Gamma ( \gamma )} \big[ \gamma X(s,t) \big]^{\gamma -1} \exp \left\{ - \gamma X(s,t)  \right\},
+$$
+ the Inverse Gaussian ISI distribution
+ $$
+  p(t,s| x,\lambda) =  x(t) \bigg( \frac{\lambda}{2\pi X(s,t)^3} \bigg)^{0.5} \exp \bigg\{-\frac{\lambda(X(s,t)-1)^2}{2 X(s,t)} \bigg\},
+ $$
+ 
+ the Log Normal ISI distribution
+ $$
+  p(t,s| x, \mu ) = \frac{x(t)}{2 X(s,t) \sqrt{\pi \mu}} \exp \left\{ -\frac{(\log X(s,t) + \mu)^2}{4\mu} \right\},
+ $$
+  
+ and the Weibull ISI distribution
+$$
+ p(t,s|x,k) = \frac{x(t)k}{\frac{1}{\Gamma(1+1/k)}} \left( \frac{X(s,t)}{\frac{1}{\Gamma(1+1/k)}} \right)^{k-1} \exp \left\{ -\left( \frac{X(s,t)}{\frac{1}{\Gamma(1+1/k)}} \right)^k \right\}.
+ $$
+
+Recall, we also have the Exponential ISI distribution giving rise to an inhomogeneous Poisson process. We can replace $\alpha(t)$ with $x(t)$ since both describe the mean spiking rate of the process. Thus the inhomogeneous Exponential ISI distribution is given by
+$$
+ p(t,s|x) = x(t) e^{-X(s,t)}.
+ $$
+ 
+ %Summary 
+ Thus, we have created five inhomogeneous ISI distributions based on the Exponential, Gamma, Inverse Gaussian, Log Normal and Weibull probability distributions. The time-dependence of each distribution comes from the intensity function $x(t)$ which represents the mean spiking rate. All the ISI distributions bar the Exponential also have a single ISI parameter $(\gamma)$, $(\lambda)$, $(\mu)$ and $(k)$ for the Gamma, Inverse Gaussian, Log Normal and Weibull respectively. This parameter describes the shape/variance of the ISI distribution. 
+ 
+ %How does ISI param change the simulated spikes.
+ In Figure \ref{fig:ISIParam} we show how the ISI parameter affects simulated spikes for the Gamma ISI distribution. We simulate spike sequences from two Gamma ISI models with the same intensity function (Panel A), where the first has ISI parameter $\gamma = 3$ (Panel B) and the second has $\gamma = 20$ (Panel C). We see that the larger ISI parameter leads to more regular spiking. This corresponds to an ISI distribution whose mass is centered around the mean with small tails. 
+ % the ISI distribution we will For example in the Gamma ISI distribution the larger $\gamma$ the more centered around the mean spike rate the ISI distribution is, i.e. the ISI times are concentrated on the mean value. In Figure \ref{fig:ISIParam} we show the affect of the varying ISI parameter. We simulate spike sequences from two Gamma ISI models with the same intensity function (Panel A), where one has ISI parameter $\gamma = 3$ (Panel B) and the other has $\gamma = 20$ (Panel C). We see that the larger ISI parameter leads to more regular spiking, which corresponds to a ISI interval which is closely centered to its mean.  
+ 
+ %Figure ISI parameter
+   \begin{figure}[t!]
+   \hrulefill
+   \begin{center} 
+    \subfloat{{\includegraphics[width=0.8 \linewidth]{Image} }}
+    \end{center}     
+    \caption{Rastor plots comparing spike sequences drawn from two Gamma ISI distributions with the same intensity function ---  shown in (A) --- and differing ISI parameter. The sequences in  (B) and (C) correspond to $\gamma$ values of $3$ and $20$ respectively.}
+    \label{fig:ISIParam}
+    \hrulefill
+    \end{figure}
+ 
+ We will use the five ISI distributions --- namely Exponential, Gamma, Inverse Gaussian, Log Normal and Weibull  --- in our analysis of \ce{Ca^2+} spike sequences and explore which, if any, of the distributions best describe \ce{Ca^2+} data and what we can learn from the results.
+
+%Paragraph on how these compare to previous work. 
+%So now that we have decided on the ISI distributions we are going to apply, how do they relate to previous work? 
+
+We now compare our inhomogeneous ISI distributions to previously explored distributions from the literature. 
+Tilunaite et al [17]
+%\cite{AGNE:1}
+ used three ISI distributions in their work, the so-called inhomogeneous Poisson (IP), inhomogeneous Gamma (IG) and the inhomogeneous Inverse Gaussian (IIG). The IP and IG agree exactly with our Exponential ISI distribution and Gamma ISI distribution. However, their IIG ISI distribution has a different parameterisation to our Inverse Gaussian ISI distribution. Their model is generalised from the Inverse Gaussian with parameters $(1,\alpha)$ whereas our model is based on the parameters $(\lambda ,1)$. We do not use their parameterisation because the mean is not one, and as such the intensity function $x$ does not agree with the mean spiking rate. 
+
+Thus the ISI distributions we consider builds upon previous work using the Exponential and Gamma ISI distributions and explores new distributions including the Log Normal and Weibull, which could better describe the \ce{Ca^2+} spike sequences.   
+
+%It is important to note that although we may find that one probability distribution best describes the \ce{Ca^2+} spikes, there may exist a better untested model. In particular, in the above example if we only tested the Exponential, Log Normal and Weibull distribution we would have said that the Weibull distribution is the best candidate to describe the \ce{Ca^2+} spikes. Thus, we have shown that the choice of ISI distribution is vital when considering stationary models. 
+\pagebreak
+
 \section{Speed of the GP}
 %Plan:
 %	-Discussion of the MCMC algorithm and how the under-relaxed

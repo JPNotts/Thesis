@@ -2,12 +2,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces The MLE and log likelihood of the MLE of each distribution fit to \ce {Ca^2+} ISIs from a HEK293 cell challenged with $10\mu \mathrm {M}$ Carbachol. The colour of the distribution matches the colour of the probability densities shown in Figure \ref {fig:ExampleISI}. \relax }}{55}{table.caption.15}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Parameterisations of the inhomogeneous ISI distributions which lead to non-identifiability, where $a>0$ is a constant. \relax }}{58}{table.caption.17}
+\contentsline {table}{\numberline {3.3}{\ignorespaces One parameter version of the stationary ISI distributions with mean one. \relax }}{60}{table.caption.19}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces The coefficients of the Haar bases for function $f$ drawn from a GP shown in Figure \ref {fig:HaarApprox}. \relax }}{85}{table.caption.27}
-\contentsline {table}{\numberline {6.2}{\ignorespaces The coefficients of bases $h_9, \dots h_{16}$ for the three functions shown in Figure \ref {fig:Extractfeature}. \relax }}{89}{table.caption.29}
-\contentsline {table}{\numberline {6.3}{\ignorespaces Example of vector representation for the features and magnitudes of the function shown in \ref {fig:Extractfeature} (A).\relax }}{96}{table.caption.32}
-\contentsline {table}{\numberline {6.4}{\ignorespaces Six clusters of the example dataset, clustered on feature position and magnitude.\relax }}{100}{table.caption.34}
-\contentsline {table}{\numberline {6.5}{\ignorespaces Features of intensity functions generated from the same cell, shown in Figure \ref {fig:Trends}. Raw and no trend corresponds to fitting the intensity function from the original \ce {Ca^2+} spike sequence and the spike sequence with linear trends removed respectively. \relax }}{106}{table.caption.39}
+\contentsline {table}{\numberline {6.1}{\ignorespaces The coefficients of the Haar bases for function $f$ drawn from a GP shown in Figure \ref {fig:HaarApprox}. \relax }}{87}{table.caption.31}
+\contentsline {table}{\numberline {6.2}{\ignorespaces The coefficients of bases $h_9, \dots h_{16}$ for the three functions shown in Figure \ref {fig:Extractfeature}. \relax }}{91}{table.caption.33}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Example of vector representation for the features and magnitudes of the function shown in \ref {fig:Extractfeature} (A).\relax }}{98}{table.caption.36}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Six clusters of the example dataset, clustered on feature position and magnitude.\relax }}{102}{table.caption.38}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Features of intensity functions generated from the same cell, shown in Figure \ref {fig:Trends}. Raw and no trend corresponds to fitting the intensity function from the original \ce {Ca^2+} spike sequence and the spike sequence with linear trends removed respectively. \relax }}{107}{table.caption.43}
 \addvspace {10\p@ }

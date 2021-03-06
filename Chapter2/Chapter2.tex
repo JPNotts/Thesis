@@ -50,7 +50,7 @@ where $x(\cdot)$ is called the intensity function, and is strictly positive. Sin
 p(\mathbf{y} | x) = g_1(0, z_1)g(z_1, z_2) \dots g(z_{n-1},z_n) g_n(z_n, Z).
 \end{equation} 
 Where $z_i = z(y_i)$ and $Z = z(T)$ are the transformed spike times and experiment time respectively. We include the dependency on the intensity $x(t)$ directly to emphasise that the transformation depends on the intensity function. The probability density $g$ relates to the original ISI probability density $p$ by 
-\begin{align} \label{eq:5}
+\begin{align} \label{eq:5} 
 g(z_i,z_{i+1} | x) =& \frac{dz}{dt} \bigg\rvert_{y_{i+1}} p(z_i, z_{i+1}),  \\
 =& x(y_{i+1}) p(z_i, z_{i+1}). \label{eq:5b}
 \end{align}

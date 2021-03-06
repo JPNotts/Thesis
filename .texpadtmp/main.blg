@@ -1,17 +1,27 @@
 This is BibTeX, Version 0.99d (TeX Live 2017)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/jakepowell/Thesis/.texpadtmp/main.aux
-White space in argument---line 376 of file /Users/jakepowell/Thesis/.texpadtmp/main.aux
+White space in argument---line 374 of file /Users/jakepowell/Thesis/.texpadtmp/main.aux
  : \citation{fig:
  :                ViewData}
 I'm skipping whatever remains of this command
 The style file: apalike.bst
-Database file #1: ../bibliography.bib
+I couldn't open database file bibliography.bib
+---line 382 of file /Users/jakepowell/Thesis/.texpadtmp/main.aux
+ : \bibdata{bibliography
+ :                      }
+I'm skipping whatever remains of this command
+I found no database files---while reading file /Users/jakepowell/Thesis/.texpadtmp/main.aux
+Warning--I didn't find a database entry for "Thurley_2014"
 Warning--I didn't find a database entry for "Davy_1908"
 Warning--I didn't find a database entry for "Ringer_1883"
 Warning--I didn't find a database entry for "Ringer_1882"
 Warning--I didn't find a database entry for ""
 Warning--I didn't find a database entry for "Tosti_2006"
+Warning--I didn't find a database entry for "VanNhieu_2003"
+Warning--I didn't find a database entry for "Santella_2004"
+Warning--I didn't find a database entry for "Whitaker_2006"
+Warning--I didn't find a database entry for "Denninger_2014"
 Warning--I didn't find a database entry for "Mattson_2003"
 Warning--I didn't find a database entry for "Orrenius_2003"
 Warning--I didn't find a database entry for "Swillens_1999"
@@ -50,6 +60,24 @@ Warning--I didn't find a database entry for "Falcke_2003"
 Warning--I didn't find a database entry for "Cuthbertson_1991"
 Warning--I didn't find a database entry for "Chay_1995"
 Warning--I didn't find a database entry for "Kummer_2005"
+Warning--I didn't find a database entry for "Thurley_2011"
+Warning--I didn't find a database entry for "Skupin"
+Warning--I didn't find a database entry for "IntFn"
+Warning--I didn't find a database entry for "rescale"
+Warning--I didn't find a database entry for "Truccolo_2005"
+Warning--I didn't find a database entry for "InvTrans"
+Warning--I didn't find a database entry for "PP"
+Warning--I didn't find a database entry for "Cunningham2008"
+Warning--I didn't find a database entry for "AGNE:1"
+Warning--I didn't find a database entry for "Gibbs"
+Warning--I didn't find a database entry for "Hastings"
+Warning--I didn't find a database entry for "RJMCMC"
+Warning--I didn't find a database entry for "Martingale"
+Warning--I didn't find a database entry for "rasmussen2004"
+Warning--I didn't find a database entry for "Nugget"
+Warning--I didn't find a database entry for "NEAL"
+Warning--I didn't find a database entry for "PP2"
+Warning--I didn't find a database entry for "KS"
 Warning--I didn't find a database entry for "Skupin_2008"
 Warning--I didn't find a database entry for "Skupin_2010"
 Warning--I didn't find a database entry for "Friedman2001"
@@ -62,45 +90,45 @@ Warning--I didn't find a database entry for "Tilunaite_2017"
 Warning--I didn't find a database entry for "Delaigle_2019"
 Warning--I didn't find a database entry for "Haar_1910"
 Warning--I didn't find a database entry for "Debnath_2003"
-You've used 23 entries,
+You've used 0 entries,
             1935 wiz_defined-function locations,
-            760 strings with 9491 characters,
-and the built_in function-call counts, 10296 in all, are:
-= -- 984
-> -- 493
-< -- 15
-+ -- 180
-- -- 170
-* -- 925
-:= -- 1781
-add.period$ -- 73
-call.type$ -- 23
-change.case$ -- 195
-chr.to.int$ -- 23
-cite$ -- 23
-duplicate$ -- 356
-empty$ -- 688
-format.name$ -- 207
-if$ -- 2016
+            623 strings with 5360 characters,
+and the built_in function-call counts, 17 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 0
+:= -- 7
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 1
+format.name$ -- 0
+if$ -- 1
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 27
-newline$ -- 119
-num.names$ -- 71
-pop$ -- 166
+missing$ -- 0
+newline$ -- 3
+num.names$ -- 0
+pop$ -- 0
 preamble$ -- 1
-purify$ -- 198
+purify$ -- 0
 quote$ -- 0
-skip$ -- 274
+skip$ -- 1
 stack$ -- 0
-substring$ -- 723
-swap$ -- 50
-text.length$ -- 3
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 130
+type$ -- 0
 warning$ -- 0
-while$ -- 76
+while$ -- 0
 width$ -- 0
-write$ -- 305
-(There was 1 error message)
+write$ -- 2
+(There were 3 error messages)

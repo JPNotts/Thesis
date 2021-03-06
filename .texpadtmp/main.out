@@ -20,34 +20,28 @@
 \BOOKMARK [1][-]{section.2.6}{Example with simulated data}{chapter.2}% 20
 \BOOKMARK [0][-]{chapter.3}{Non-trivial Model Properties}{}% 21
 \BOOKMARK [1][-]{section.3.1}{ISI Distribution}{chapter.3}% 22
-\BOOKMARK [2][-]{subsection.3.1.1}{Non-Identifiability issues with two parameter ISI distributions}{section.3.1}% 23
-\BOOKMARK [2][-]{subsection.3.1.2}{Choosing one-parameter ISI distributions}{section.3.1}% 24
-\BOOKMARK [2][-]{subsection.3.1.3}{Gamma distribution}{section.3.1}% 25
-\BOOKMARK [2][-]{subsection.3.1.4}{Inverse Gaussian distribution}{section.3.1}% 26
-\BOOKMARK [2][-]{subsection.3.1.5}{Log Normal distribution}{section.3.1}% 27
-\BOOKMARK [2][-]{subsection.3.1.6}{Weibull distribution}{section.3.1}% 28
-\BOOKMARK [1][-]{section.3.2}{Speed of the GP}{chapter.3}% 29
-\BOOKMARK [2][-]{subsection.3.2.1}{Projection}{section.3.2}% 30
-\BOOKMARK [2][-]{subsection.3.2.2}{Spectral representation}{section.3.2}% 31
-\BOOKMARK [1][-]{section.3.3}{Estimating Length Scale}{chapter.3}% 32
-\BOOKMARK [2][-]{subsection.3.3.1}{How to estimate}{section.3.3}% 33
-\BOOKMARK [2][-]{subsection.3.3.2}{Estimating with multiple data}{section.3.3}% 34
-\BOOKMARK [2][-]{subsection.3.3.3}{Issues with single spike sequence}{section.3.3}% 35
-\BOOKMARK [0][-]{chapter.4}{Refractory Period}{}% 36
-\BOOKMARK [1][-]{subsection.4.0.1}{How it affects the model}{chapter.4}% 37
-\BOOKMARK [2][-]{subsection.4.0.2}{Estimating Tmin}{subsection.4.0.1}% 38
-\BOOKMARK [0][-]{chapter.5}{Application to Real Data}{}% 39
-\BOOKMARK [1][-]{section.5.1}{Section}{chapter.5}% 40
-\BOOKMARK [0][-]{chapter.6}{Clustering Intensity Functions}{}% 41
-\BOOKMARK [1][-]{section.6.1}{The Haar basis}{chapter.6}% 42
-\BOOKMARK [1][-]{section.6.2}{Extracting features}{chapter.6}% 43
-\BOOKMARK [2][-]{subsection.6.2.1}{Calculating the magnitude of the features}{section.6.2}% 44
-\BOOKMARK [1][-]{section.6.3}{Clustering}{chapter.6}% 45
-\BOOKMARK [1][-]{section.6.4}{Application to HEK293 cells}{chapter.6}% 46
-\BOOKMARK [2][-]{subsection.6.4.1}{Effects of altering Ca2+ spike times on features}{section.6.4}% 47
-\BOOKMARK [2][-]{subsection.6.4.2}{Constant stimulus experiments}{section.6.4}% 48
-\BOOKMARK [2][-]{subsection.6.4.3}{Step change experiments}{section.6.4}% 49
-\BOOKMARK [1][-]{section.6.5}{Summary}{chapter.6}% 50
-\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 51
-\BOOKMARK [1][-]{subsection.7.0.1}{Web application for simulating spikes}{chapter.7}% 52
-\BOOKMARK [2][-]{subsection.7.0.2}{Web application for viewing/analysing raw data}{subsection.7.0.1}% 53
+\BOOKMARK [1][-]{section.3.2}{Speed of the GP}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.2.1}{Projection}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{Spectral representation}{section.3.2}% 25
+\BOOKMARK [1][-]{section.3.3}{Estimating Length Scale}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.1}{How to estimate}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.2}{Estimating with multiple data}{section.3.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.3}{Issues with single spike sequence}{section.3.3}% 29
+\BOOKMARK [0][-]{chapter.4}{Refractory Period}{}% 30
+\BOOKMARK [1][-]{subsection.4.0.1}{How it affects the model}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.0.2}{Estimating Tmin}{subsection.4.0.1}% 32
+\BOOKMARK [0][-]{chapter.5}{Application to Real Data}{}% 33
+\BOOKMARK [1][-]{section.5.1}{Section}{chapter.5}% 34
+\BOOKMARK [0][-]{chapter.6}{Clustering Intensity Functions}{}% 35
+\BOOKMARK [1][-]{section.6.1}{The Haar basis}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.2}{Extracting features}{chapter.6}% 37
+\BOOKMARK [2][-]{subsection.6.2.1}{Calculating the magnitude of the features}{section.6.2}% 38
+\BOOKMARK [1][-]{section.6.3}{Clustering}{chapter.6}% 39
+\BOOKMARK [1][-]{section.6.4}{Application to HEK293 cells}{chapter.6}% 40
+\BOOKMARK [2][-]{subsection.6.4.1}{Effects of altering Ca2+ spike times on features}{section.6.4}% 41
+\BOOKMARK [2][-]{subsection.6.4.2}{Constant stimulus experiments}{section.6.4}% 42
+\BOOKMARK [2][-]{subsection.6.4.3}{Step change experiments}{section.6.4}% 43
+\BOOKMARK [1][-]{section.6.5}{Summary}{chapter.6}% 44
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 45
+\BOOKMARK [1][-]{subsection.7.0.1}{Web application for simulating spikes}{chapter.7}% 46
+\BOOKMARK [2][-]{subsection.7.0.2}{Web application for viewing/analysing raw data}{subsection.7.0.1}% 47

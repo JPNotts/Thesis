@@ -109,7 +109,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Bayesian Computation}{18}{section.2.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Simple Model}{19}{subsection.2.4.1}}
 \newlabel{eq:SimPrior}{{2.16}{19}{Simple Model}{equation.2.4.16}{}}
-\newlabel{eq:likeliFixed}{{2.17}{20}{Simple Model}{equation.2.4.17}{}}
+\newlabel{eq:likeliFixed}{{2.17}{19}{Simple Model}{equation.2.4.17}{}}
 \newlabel{eq:MH}{{2.19}{20}{Simple Model}{equation.2.4.19}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Posterior results from the simple model. Each grey point represents one sample from the posterior distribution, where overlapping values become darker. The red dot is the value obtained using MLE. The histograms, top and right, represent the individual posterior distributions of $x$ and $\theta $ respectively. \relax }}{21}{figure.caption.5}}
 \newlabel{fig:simple}{{2.3}{21}{Posterior results from the simple model. Each grey point represents one sample from the posterior distribution, where overlapping values become darker. The red dot is the value obtained using MLE. The histograms, top and right, represent the individual posterior distributions of $x$ and $\theta $ respectively. \relax }{figure.caption.5}{}}
@@ -156,8 +156,8 @@
 \citation{rescale,PP2}
 \citation{IntFn,PP2}
 \citation{rescale,PP2}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Model Assessment}{42}{section.2.5}}
 \citation{rescale,KS}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Model Assessment}{42}{section.2.5}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.6}Example with simulated data}{43}{section.2.6}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Inference for PWC prior.\relax }}{46}{algocf.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Illustration of how varying hyper parameters changes realisations of a Gaussian Process with mean 0. We draw 3 samples from the following GP priors: (A) $\sigma _f^2 = 1, l = 2, \sigma _v^2 = 0 $ (B) $\sigma _f^2 = 1, l = 1, \sigma _v^2 = 0 $ (C) $\sigma _f^2 = 2, l = 2, \sigma _v^2 = 0 $ (D) $\sigma _f^2 = 1, l = 2, \sigma _v^2 = 0.01.$ The magenta region indicates the 95\% confidence intervals. In (B) we notice that decreasing the length scale leads the realisation to vary more frequently with time. In (C) increasing $\sigma ^2_f$ increases the range of values taken (variance). Finally, (D) shows noise is controlled by $\sigma ^2_v$. \relax }}{47}{figure.caption.10}}
@@ -187,64 +187,62 @@
 \@writefile{loa}{\addvspace {10\p@ }}
 \newlabel{chapter 3}{{3}{51}{Non-trivial Model Properties}{chapter.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}ISI Distribution}{51}{section.3.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Example ISI distributions. \relax }}{54}{figure.caption.15}}
-\newlabel{fig:ExampleISI}{{3.1}{54}{Example ISI distributions. \relax }{figure.caption.15}{}}
-\newlabel{eq:5}{{3.1}{54}{ISI Distribution}{equation.3.1.1}{}}
-\newlabel{eq:5b}{{3.2}{54}{ISI Distribution}{equation.3.1.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Histograms comparing the intensity to histograms of 1000 simulated spike sequences. The light and dark histograms correspond to simulating spikes with ISI distributions Gamma(1.8,1.8) and Gamma(3.6,1.8) respectively. \relax }}{55}{figure.caption.16}}
-\newlabel{fig:CompareHist}{{3.2}{55}{Histograms comparing the intensity to histograms of 1000 simulated spike sequences. The light and dark histograms correspond to simulating spikes with ISI distributions Gamma(1.8,1.8) and Gamma(3.6,1.8) respectively. \relax }{figure.caption.16}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces The MLE and log likelihood of the MLE of each distribution fit to \ce {Ca^2+} ISIs from a HEK293 cell challenged with $10\mu \mathrm  {M}$ Carbachol. The colour of the distribution matches the colour of the probability densities shown in Figure \ref  {fig:ExampleISI}. \relax }}{55}{table.caption.15}}
+\newlabel{table:Stationary}{{3.1}{55}{The MLE and log likelihood of the MLE of each distribution fit to \ce {Ca^2+} ISIs from a HEK293 cell challenged with $10\mu \mathrm {M}$ Carbachol. The colour of the distribution matches the colour of the probability densities shown in Figure \ref {fig:ExampleISI}. \relax }{table.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Probability density functions corresponding to the MLE of: an Exponential (dark green), a Gamma (orange), Inverse Gaussian (pink), Log Normal (light green) or Weibull Distribution (blue) fit to ISIs --- shown as black ticks on the x-axis. \relax }}{55}{figure.caption.16}}
+\newlabel{fig:ExampleISI}{{3.1}{55}{Probability density functions corresponding to the MLE of: an Exponential (dark green), a Gamma (orange), Inverse Gaussian (pink), Log Normal (light green) or Weibull Distribution (blue) fit to ISIs --- shown as black ticks on the x-axis. \relax }{figure.caption.16}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Parameterisations of the inhomogeneous ISI distributions which lead to non-identifiability, where $a>0$ is a constant. \relax }}{58}{table.caption.17}}
+\newlabel{table:Non-ident}{{3.2}{58}{Parameterisations of the inhomogeneous ISI distributions which lead to non-identifiability, where $a>0$ is a constant. \relax }{table.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Comparing the intensity function --- the red line in both plots --- to histograms of 1000 simulated spike sequences. In (A) the light and dark boxes correspond to spikes generated from the model with Gamma ISI distributions with parameters Gamma(1.8,1.8) and Gamma(3.6,1.8) respectively. In (B) the spike sequences are simulated from a Gamma(1.8,1.8) and an Inverse Gaussian (1.8,1) resulting in the histograms in blue and red respectively, whose overlap is purple. \relax }}{60}{figure.caption.18}}
+\newlabel{fig:CompareHist}{{3.2}{60}{Comparing the intensity function --- the red line in both plots --- to histograms of 1000 simulated spike sequences. In (A) the light and dark boxes correspond to spikes generated from the model with Gamma ISI distributions with parameters Gamma(1.8,1.8) and Gamma(3.6,1.8) respectively. In (B) the spike sequences are simulated from a Gamma(1.8,1.8) and an Inverse Gaussian (1.8,1) resulting in the histograms in blue and red respectively, whose overlap is purple. \relax }{figure.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces One parameter version of the stationary ISI distributions with mean one. \relax }}{60}{table.caption.19}}
+\newlabel{table:oneparam}{{3.3}{60}{One parameter version of the stationary ISI distributions with mean one. \relax }{table.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Rastor plots comparing spike sequences drawn from two Gamma ISI distributions with the same intensity function --- shown in (A) --- and differing ISI parameter. The sequences in (B) and (C) correspond to $\gamma $ values of $3$ and $20$ respectively.\relax }}{62}{figure.caption.20}}
+\newlabel{fig:ISIParam}{{3.3}{62}{Rastor plots comparing spike sequences drawn from two Gamma ISI distributions with the same intensity function --- shown in (A) --- and differing ISI parameter. The sequences in (B) and (C) correspond to $\gamma $ values of $3$ and $20$ respectively.\relax }{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Speed of the GP}{64}{section.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Projection}{64}{subsection.3.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Spectral representation}{64}{subsection.3.2.2}}
 \citation{}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Non-Identifiability issues with two parameter ISI distributions}{57}{subsection.3.1.1}}
-\citation{}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Choosing one-parameter ISI distributions}{58}{subsection.3.1.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Gamma distribution}{58}{subsection.3.1.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Inverse Gaussian distribution}{59}{subsection.3.1.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.5}Log Normal distribution}{60}{subsection.3.1.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.6}Weibull distribution}{61}{subsection.3.1.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Speed of the GP}{62}{section.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Projection}{62}{subsection.3.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Spectral representation}{62}{subsection.3.2.2}}
-\citation{}
-\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces Simulating Gaussian Process via spectral decomposition.\relax }}{64}{algocf.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Estimating Length Scale}{64}{section.3.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Plot showing the mean posterior intensity functions with different fixed values of $l$, where the input data are the ticks on the x-axis.\relax }}{65}{figure.caption.18}}
-\newlabel{fig: LEstimate_EqualLikeli}{{3.3}{65}{Plot showing the mean posterior intensity functions with different fixed values of $l$, where the input data are the ticks on the x-axis.\relax }{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}How to estimate}{65}{subsection.3.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Estimating with multiple data}{65}{subsection.3.3.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces (A) The intensity function drawn from a GP with mean 0 and length scale 3, used as the input to generate spike sequences. (B) Historgram of posterior samples of $l$ for the intensity function in (A). \relax }}{66}{figure.caption.19}}
-\newlabel{fig: L_Estimate1}{{3.4}{66}{(A) The intensity function drawn from a GP with mean 0 and length scale 3, used as the input to generate spike sequences. (B) Historgram of posterior samples of $l$ for the intensity function in (A). \relax }{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{66}{subfigure.4.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{66}{subfigure.4.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces (A) The posterior intensity function (black) with 95\% confidence interval (grey), with the intensity function (red) that the spikes were drawn from. (B)(C) historgram of posterior for $l$ and $\gamma $ respectively. \relax }}{67}{figure.caption.20}}
-\newlabel{fig: L_Estimate1}{{3.5}{67}{(A) The posterior intensity function (black) with 95\% confidence interval (grey), with the intensity function (red) that the spikes were drawn from. (B)(C) historgram of posterior for $l$ and $\gamma $ respectively. \relax }{figure.caption.20}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{67}{subfigure.5.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{67}{subfigure.5.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{67}{subfigure.5.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces A plot show two intensities with different length scales, however both curves have the same integral between spike times and thus the same likelihood.\relax }}{68}{figure.caption.21}}
-\newlabel{fig: LEstimate_EqualLikeli}{{3.6}{68}{A plot show two intensities with different length scales, however both curves have the same integral between spike times and thus the same likelihood.\relax }{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Issues with single spike sequence}{68}{subsection.3.3.3}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Refractory Period}{69}{chapter.4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces Simulating Gaussian Process via spectral decomposition.\relax }}{66}{algocf.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Estimating Length Scale}{66}{section.3.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Plot showing the mean posterior intensity functions with different fixed values of $l$, where the input data are the ticks on the x-axis.\relax }}{67}{figure.caption.22}}
+\newlabel{fig: LEstimate_EqualLikeli}{{3.4}{67}{Plot showing the mean posterior intensity functions with different fixed values of $l$, where the input data are the ticks on the x-axis.\relax }{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}How to estimate}{67}{subsection.3.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Estimating with multiple data}{67}{subsection.3.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces (A) The intensity function drawn from a GP with mean 0 and length scale 3, used as the input to generate spike sequences. (B) Historgram of posterior samples of $l$ for the intensity function in (A). \relax }}{68}{figure.caption.23}}
+\newlabel{fig: L_Estimate1}{{3.5}{68}{(A) The intensity function drawn from a GP with mean 0 and length scale 3, used as the input to generate spike sequences. (B) Historgram of posterior samples of $l$ for the intensity function in (A). \relax }{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{68}{subfigure.5.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{68}{subfigure.5.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces (A) The posterior intensity function (black) with 95\% confidence interval (grey), with the intensity function (red) that the spikes were drawn from. (B)(C) historgram of posterior for $l$ and $\gamma $ respectively. \relax }}{69}{figure.caption.24}}
+\newlabel{fig: L_Estimate1}{{3.6}{69}{(A) The posterior intensity function (black) with 95\% confidence interval (grey), with the intensity function (red) that the spikes were drawn from. (B)(C) historgram of posterior for $l$ and $\gamma $ respectively. \relax }{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{69}{subfigure.6.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{69}{subfigure.6.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{69}{subfigure.6.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces A plot show two intensities with different length scales, however both curves have the same integral between spike times and thus the same likelihood.\relax }}{70}{figure.caption.25}}
+\newlabel{fig: LEstimate_EqualLikeli}{{3.7}{70}{A plot show two intensities with different length scales, however both curves have the same integral between spike times and thus the same likelihood.\relax }{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Issues with single spike sequence}{70}{subsection.3.3.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Refractory Period}{71}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chapter 4}{{4}{69}{Refractory Period}{chapter.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.0.1}How it affects the model}{69}{subsection.4.0.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.0.2}Estimating $T_{\mathrm  {min}}$}{70}{subsection.4.0.2}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Application to Real Data}{72}{chapter.5}}
+\newlabel{chapter 4}{{4}{71}{Refractory Period}{chapter.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.0.1}How it affects the model}{71}{subsection.4.0.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.0.2}Estimating $T_{\mathrm  {min}}$}{72}{subsection.4.0.2}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Application to Real Data}{74}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chapter 5}{{5}{72}{Application to Real Data}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Section}{72}{section.5.1}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Clustering Intensity Functions}{73}{chapter.6}}
+\newlabel{chapter 5}{{5}{74}{Application to Real Data}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Section}{74}{section.5.1}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Clustering Intensity Functions}{75}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chapter 6}{{6}{73}{Clustering Intensity Functions}{chapter.6}{}}
+\newlabel{chapter 6}{{6}{75}{Clustering Intensity Functions}{chapter.6}{}}
 \citation{Skupin_2008,Skupin_2010}
 \citation{Thurley_2014}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces An explanation of how we generate intensity functions (D) from experimental data. For a single cell we begin with a Fura-2 fluorescence intensity trace (A) --- the changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$) --- which is thresholded to calculate \ce {Ca^2+} spike times (B). The \ce {Ca^2+} spike times are used as an input into our model which returns the posterior distribution of the intensity function (C). The posterior distribution in (C) shows the mean (black line) with 95\% confidence interval (grey region).\relax }}{74}{figure.caption.22}}
-\newlabel{fig:SoFar}{{6.1}{74}{An explanation of how we generate intensity functions (D) from experimental data. For a single cell we begin with a Fura-2 fluorescence intensity trace (A) --- the changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$) --- which is thresholded to calculate \ce {Ca^2+} spike times (B). The \ce {Ca^2+} spike times are used as an input into our model which returns the posterior distribution of the intensity function (C). The posterior distribution in (C) shows the mean (black line) with 95\% confidence interval (grey region).\relax }{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces An explanation of how we generate intensity functions (D) from experimental data. For a single cell we begin with a Fura-2 fluorescence intensity trace (A) --- the changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$) --- which is thresholded to calculate \ce {Ca^2+} spike times (B). The \ce {Ca^2+} spike times are used as an input into our model which returns the posterior distribution of the intensity function (C). The posterior distribution in (C) shows the mean (black line) with 95\% confidence interval (grey region).\relax }}{76}{figure.caption.26}}
+\newlabel{fig:SoFar}{{6.1}{76}{An explanation of how we generate intensity functions (D) from experimental data. For a single cell we begin with a Fura-2 fluorescence intensity trace (A) --- the changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$) --- which is thresholded to calculate \ce {Ca^2+} spike times (B). The \ce {Ca^2+} spike times are used as an input into our model which returns the posterior distribution of the intensity function (C). The posterior distribution in (C) shows the mean (black line) with 95\% confidence interval (grey region).\relax }{figure.caption.26}{}}
 \citation{Friedman2001}
 \citation{Estivill_Castro_2002}
 \citation{Arthur_2007}
@@ -253,157 +251,134 @@
 \citation{Ng_2001}
 \citation{Tilunaite_2017}
 \citation{Delaigle_2019}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Example of clustering using k-means with 3 clusters. Each point on the graph corresponds to a single intensity function. Red/black/green corresponds to which cluster the intensity function belongs. The crosses correspond to the center of each cluster.\relax }}{77}{figure.caption.23}}
-\newlabel{fig:k_means}{{6.2}{77}{Example of clustering using k-means with 3 clusters. Each point on the graph corresponds to a single intensity function. Red/black/green corresponds to which cluster the intensity function belongs. The crosses correspond to the center of each cluster.\relax }{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Example of clustering methodology applied to three functions. The black and blue lines are grouped together as they have similar shape. Whereas, although the red and black lines have a similar intensity they will not be grouped together as they have different shapes.\relax }}{78}{figure.caption.24}}
-\newlabel{fig:Similar}{{6.3}{78}{Example of clustering methodology applied to three functions. The black and blue lines are grouped together as they have similar shape. Whereas, although the red and black lines have a similar intensity they will not be grouped together as they have different shapes.\relax }{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Example of clustering using k-means with 3 clusters. Each point on the graph corresponds to a single intensity function. Red/black/green corresponds to which cluster the intensity function belongs. The crosses correspond to the center of each cluster.\relax }}{79}{figure.caption.27}}
+\newlabel{fig:k_means}{{6.2}{79}{Example of clustering using k-means with 3 clusters. Each point on the graph corresponds to a single intensity function. Red/black/green corresponds to which cluster the intensity function belongs. The crosses correspond to the center of each cluster.\relax }{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Example of clustering methodology applied to three functions. The black and blue lines are grouped together as they have similar shape. Whereas, although the red and black lines have a similar intensity they will not be grouped together as they have different shapes.\relax }}{80}{figure.caption.28}}
+\newlabel{fig:Similar}{{6.3}{80}{Example of clustering methodology applied to three functions. The black and blue lines are grouped together as they have similar shape. Whereas, although the red and black lines have a similar intensity they will not be grouped together as they have different shapes.\relax }{figure.caption.28}{}}
 \citation{Tilunaite_2017}
 \citation{Delaigle_2019}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Clustering a dataset containing constant functions and functions with a single bump. In (A) we cluster using the method in Tilunaite and (B) Delaigle.\relax }}{79}{figure.caption.25}}
-\newlabel{fig:FitBad}{{6.4}{79}{Clustering a dataset containing constant functions and functions with a single bump. In (A) we cluster using the method in Tilunaite and (B) Delaigle.\relax }{figure.caption.25}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{79}{subfigure.4.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{79}{subfigure.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Clustering a dataset containing constant functions and functions with a single bump. In (A) we cluster using the method in Tilunaite and (B) Delaigle.\relax }}{81}{figure.caption.29}}
+\newlabel{fig:FitBad}{{6.4}{81}{Clustering a dataset containing constant functions and functions with a single bump. In (A) we cluster using the method in Tilunaite and (B) Delaigle.\relax }{figure.caption.29}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{81}{subfigure.4.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{81}{subfigure.4.2}}
 \citation{Tilunaite_2017}
 \citation{Haar_1910}
 \citation{Debnath_2003}
 \citation{Delaigle_2019}
 \citation{Haar_1910}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}The Haar basis}{81}{section.6.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces The first 8 Haar bases on the interval $[0,20]$.\relax }}{82}{figure.caption.26}}
-\newlabel{fig:HaarBasis}{{6.5}{82}{The first 8 Haar bases on the interval $[0,20]$.\relax }{figure.caption.26}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {$h_1$}}}{82}{subfigure.5.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {$h_2$}}}{82}{subfigure.5.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {$h_3$}}}{82}{subfigure.5.3}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {$h_4$}}}{82}{subfigure.5.4}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {$h_5$}}}{82}{subfigure.5.5}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces {$h_6$}}}{82}{subfigure.5.6}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(g)}{\ignorespaces {$h_7$}}}{82}{subfigure.5.7}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(h)}{\ignorespaces {$h_8$}}}{82}{subfigure.5.8}}
-\newlabel{table:Haar}{{\caption@xref {table:Haar}{ on input line 190}}{85}{The Haar basis}{table.caption.27}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces The coefficients of the Haar bases for function $f$ drawn from a GP shown in Figure \ref  {fig:HaarApprox}. \relax }}{85}{table.caption.27}}
-\newlabel{table:HaarCoef}{{6.1}{85}{The coefficients of the Haar bases for function $f$ drawn from a GP shown in Figure \ref {fig:HaarApprox}. \relax }{table.caption.27}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Extracting features}{85}{section.6.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Approximating a function via the Haar basis. The function (black line) is approximated by using 2 (red), 8 (orange) and 32 (blue) Haar bases.\relax }}{86}{figure.caption.28}}
-\newlabel{fig:HaarApprox}{{6.6}{86}{Approximating a function via the Haar basis. The function (black line) is approximated by using 2 (red), 8 (orange) and 32 (blue) Haar bases.\relax }{figure.caption.28}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces The coefficients of bases $h_9, \dots  h_{16}$ for the three functions shown in Figure \ref  {fig:Extractfeature}. \relax }}{89}{table.caption.29}}
-\newlabel{table:Haar_Features}{{6.2}{89}{The coefficients of bases $h_9, \dots h_{16}$ for the three functions shown in Figure \ref {fig:Extractfeature}. \relax }{table.caption.29}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces  Functions (black lines) drawn from a GP on the interval $[0,20]$ with step size equal to 0.01 and length scale equal 2 (A), 4 (B) and 10 (C). The red piecewise constant functions show the approximation given by 16 Haar bases. The intervals of the finest 8 Haar bases are visualised by the regions separated by the grey lines. \relax }}{90}{figure.caption.30}}
-\newlabel{fig:Extractfeature}{{6.7}{90}{Functions (black lines) drawn from a GP on the interval $[0,20]$ with step size equal to 0.01 and length scale equal 2 (A), 4 (B) and 10 (C). The red piecewise constant functions show the approximation given by 16 Haar bases. The intervals of the finest 8 Haar bases are visualised by the regions separated by the grey lines. \relax }{figure.caption.30}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{90}{subfigure.7.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{90}{subfigure.7.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{90}{subfigure.7.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Visualisation of extracting features for the functions in Figure \ref  {fig:Extractfeature}. In step 2 we highlight the bases whose coefficient is larger than the threshold --- 0.18, 0.13 and 0.08 for functions 1, 2 and 3 respectively. In step 3 the orange box symbolised the base added into the important bases, when checking for a peak. In step 4 we split the bases into consecutive indices, hence splitting the bases for function 1 into two groups, shown in light and dark blue. In step 5 each group from step 4 is partitioned into negative (red) and positive values (yellow). The boxes surrounding the bases shows the different features found by looking at the pattern of sign changes. Function 1 has two features; a bump in bases $\{9,10,11,12\}$ and another bump in bases $\{15,16\}$. Function 2 also has two features; a bump in bases $\{9,10,11,12,13\}$ and an increasing region in bases $\{14,15,16\}$. Function 3 has one feature; a bump in the bases $\{9, \dots  , 16\}$.\relax }}{91}{figure.caption.31}}
-\newlabel{fig:tableFeatures}{{6.8}{91}{Visualisation of extracting features for the functions in Figure \ref {fig:Extractfeature}. In step 2 we highlight the bases whose coefficient is larger than the threshold --- 0.18, 0.13 and 0.08 for functions 1, 2 and 3 respectively. In step 3 the orange box symbolised the base added into the important bases, when checking for a peak. In step 4 we split the bases into consecutive indices, hence splitting the bases for function 1 into two groups, shown in light and dark blue. In step 5 each group from step 4 is partitioned into negative (red) and positive values (yellow). The boxes surrounding the bases shows the different features found by looking at the pattern of sign changes. Function 1 has two features; a bump in bases $\{9,10,11,12\}$ and another bump in bases $\{15,16\}$. Function 2 also has two features; a bump in bases $\{9,10,11,12,13\}$ and an increasing region in bases $\{14,15,16\}$. Function 3 has one feature; a bump in the bases $\{9, \dots , 16\}$.\relax }{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Calculating the magnitude of the features}{93}{subsection.6.2.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Clustering}{95}{section.6.3}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces Example of vector representation for the features and magnitudes of the function shown in \ref  {fig:Extractfeature} (A).\relax }}{96}{table.caption.32}}
-\newlabel{table:featureEx}{{6.3}{96}{Example of vector representation for the features and magnitudes of the function shown in \ref {fig:Extractfeature} (A).\relax }{table.caption.32}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces (A) shows the functions to be clustered, where the first 10 functions (black lines) have a single bump in $[0,10]$, functions 11-20 (red lines) have a single bump in $[10,20]$, and functions 21-30 (blue lines) have a bump in each region. (B) shows the resultant features of each function and (C) the features magnitude.\relax }}{98}{figure.caption.33}}
-\newlabel{fig:Example}{{6.9}{98}{(A) shows the functions to be clustered, where the first 10 functions (black lines) have a single bump in $[0,10]$, functions 11-20 (red lines) have a single bump in $[10,20]$, and functions 21-30 (blue lines) have a bump in each region. (B) shows the resultant features of each function and (C) the features magnitude.\relax }{figure.caption.33}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{98}{subfigure.9.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{98}{subfigure.9.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{98}{subfigure.9.3}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.4}{\ignorespaces Six clusters of the example dataset, clustered on feature position and magnitude.\relax }}{100}{table.caption.34}}
-\newlabel{table:ExCluster2}{{6.4}{100}{Six clusters of the example dataset, clustered on feature position and magnitude.\relax }{table.caption.34}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Application to HEK293 cells}{100}{section.6.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.10}{\ignorespaces Clusters of the simulated dataset, where clustering depends on position and magnitudes of features explained in Table \ref  {table:ExCluster2}. \relax }}{101}{figure.caption.35}}
-\newlabel{fig:Plot_ExCluster}{{6.10}{101}{Clusters of the simulated dataset, where clustering depends on position and magnitudes of features explained in Table \ref {table:ExCluster2}. \relax }{figure.caption.35}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces { $\{1,3,8,9,10\}$}}}{101}{subfigure.10.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {$\{2,4,5,6,7\}$}}}{101}{subfigure.10.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {$\{11,16,19\}$}}}{101}{subfigure.10.3}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {$\{12,13,14,15,17,18,20\}$}}}{101}{subfigure.10.4}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {$\{22,24,25,30\}$ }}}{101}{subfigure.10.5}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces { $\{21,23,26,27,28,29\}$}}}{101}{subfigure.10.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}The Haar basis}{83}{section.6.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces The first 8 Haar bases on the interval $[0,20]$.\relax }}{84}{figure.caption.30}}
+\newlabel{fig:HaarBasis}{{6.5}{84}{The first 8 Haar bases on the interval $[0,20]$.\relax }{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {$h_1$}}}{84}{subfigure.5.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {$h_2$}}}{84}{subfigure.5.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {$h_3$}}}{84}{subfigure.5.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {$h_4$}}}{84}{subfigure.5.4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {$h_5$}}}{84}{subfigure.5.5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces {$h_6$}}}{84}{subfigure.5.6}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(g)}{\ignorespaces {$h_7$}}}{84}{subfigure.5.7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(h)}{\ignorespaces {$h_8$}}}{84}{subfigure.5.8}}
+\newlabel{table:Haar}{{\caption@xref {table:Haar}{ on input line 190}}{87}{The Haar basis}{table.caption.31}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces The coefficients of the Haar bases for function $f$ drawn from a GP shown in Figure \ref  {fig:HaarApprox}. \relax }}{87}{table.caption.31}}
+\newlabel{table:HaarCoef}{{6.1}{87}{The coefficients of the Haar bases for function $f$ drawn from a GP shown in Figure \ref {fig:HaarApprox}. \relax }{table.caption.31}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Extracting features}{87}{section.6.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Approximating a function via the Haar basis. The function (black line) is approximated by using 2 (red), 8 (orange) and 32 (blue) Haar bases.\relax }}{88}{figure.caption.32}}
+\newlabel{fig:HaarApprox}{{6.6}{88}{Approximating a function via the Haar basis. The function (black line) is approximated by using 2 (red), 8 (orange) and 32 (blue) Haar bases.\relax }{figure.caption.32}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces The coefficients of bases $h_9, \dots  h_{16}$ for the three functions shown in Figure \ref  {fig:Extractfeature}. \relax }}{91}{table.caption.33}}
+\newlabel{table:Haar_Features}{{6.2}{91}{The coefficients of bases $h_9, \dots h_{16}$ for the three functions shown in Figure \ref {fig:Extractfeature}. \relax }{table.caption.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces  Functions (black lines) drawn from a GP on the interval $[0,20]$ with step size equal to 0.01 and length scale equal 2 (A), 4 (B) and 10 (C). The red piecewise constant functions show the approximation given by 16 Haar bases. The intervals of the finest 8 Haar bases are visualised by the regions separated by the grey lines. \relax }}{92}{figure.caption.34}}
+\newlabel{fig:Extractfeature}{{6.7}{92}{Functions (black lines) drawn from a GP on the interval $[0,20]$ with step size equal to 0.01 and length scale equal 2 (A), 4 (B) and 10 (C). The red piecewise constant functions show the approximation given by 16 Haar bases. The intervals of the finest 8 Haar bases are visualised by the regions separated by the grey lines. \relax }{figure.caption.34}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{92}{subfigure.7.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{92}{subfigure.7.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{92}{subfigure.7.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Visualisation of extracting features for the functions in Figure \ref  {fig:Extractfeature}. In step 2 we highlight the bases whose coefficient is larger than the threshold --- 0.18, 0.13 and 0.08 for functions 1, 2 and 3 respectively. In step 3 the orange box symbolised the base added into the important bases, when checking for a peak. In step 4 we split the bases into consecutive indices, hence splitting the bases for function 1 into two groups, shown in light and dark blue. In step 5 each group from step 4 is partitioned into negative (red) and positive values (yellow). The boxes surrounding the bases shows the different features found by looking at the pattern of sign changes. Function 1 has two features; a bump in bases $\{9,10,11,12\}$ and another bump in bases $\{15,16\}$. Function 2 also has two features; a bump in bases $\{9,10,11,12,13\}$ and an increasing region in bases $\{14,15,16\}$. Function 3 has one feature; a bump in the bases $\{9, \dots  , 16\}$.\relax }}{93}{figure.caption.35}}
+\newlabel{fig:tableFeatures}{{6.8}{93}{Visualisation of extracting features for the functions in Figure \ref {fig:Extractfeature}. In step 2 we highlight the bases whose coefficient is larger than the threshold --- 0.18, 0.13 and 0.08 for functions 1, 2 and 3 respectively. In step 3 the orange box symbolised the base added into the important bases, when checking for a peak. In step 4 we split the bases into consecutive indices, hence splitting the bases for function 1 into two groups, shown in light and dark blue. In step 5 each group from step 4 is partitioned into negative (red) and positive values (yellow). The boxes surrounding the bases shows the different features found by looking at the pattern of sign changes. Function 1 has two features; a bump in bases $\{9,10,11,12\}$ and another bump in bases $\{15,16\}$. Function 2 also has two features; a bump in bases $\{9,10,11,12,13\}$ and an increasing region in bases $\{14,15,16\}$. Function 3 has one feature; a bump in the bases $\{9, \dots , 16\}$.\relax }{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Calculating the magnitude of the features}{95}{subsection.6.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Clustering}{97}{section.6.3}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces Example of vector representation for the features and magnitudes of the function shown in \ref  {fig:Extractfeature} (A).\relax }}{98}{table.caption.36}}
+\newlabel{table:featureEx}{{6.3}{98}{Example of vector representation for the features and magnitudes of the function shown in \ref {fig:Extractfeature} (A).\relax }{table.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces (A) shows the functions to be clustered, where the first 10 functions (black lines) have a single bump in $[0,10]$, functions 11-20 (red lines) have a single bump in $[10,20]$, and functions 21-30 (blue lines) have a bump in each region. (B) shows the resultant features of each function and (C) the features magnitude.\relax }}{100}{figure.caption.37}}
+\newlabel{fig:Example}{{6.9}{100}{(A) shows the functions to be clustered, where the first 10 functions (black lines) have a single bump in $[0,10]$, functions 11-20 (red lines) have a single bump in $[10,20]$, and functions 21-30 (blue lines) have a bump in each region. (B) shows the resultant features of each function and (C) the features magnitude.\relax }{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{100}{subfigure.9.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{100}{subfigure.9.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{100}{subfigure.9.3}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.4}{\ignorespaces Six clusters of the example dataset, clustered on feature position and magnitude.\relax }}{102}{table.caption.38}}
+\newlabel{table:ExCluster2}{{6.4}{102}{Six clusters of the example dataset, clustered on feature position and magnitude.\relax }{table.caption.38}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Application to HEK293 cells}{102}{section.6.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.10}{\ignorespaces Clusters of the simulated dataset, where clustering depends on position and magnitudes of features explained in Table \ref  {table:ExCluster2}. \relax }}{103}{figure.caption.39}}
+\newlabel{fig:Plot_ExCluster}{{6.10}{103}{Clusters of the simulated dataset, where clustering depends on position and magnitudes of features explained in Table \ref {table:ExCluster2}. \relax }{figure.caption.39}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces { $\{1,3,8,9,10\}$}}}{103}{subfigure.10.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {$\{2,4,5,6,7\}$}}}{103}{subfigure.10.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {$\{11,16,19\}$}}}{103}{subfigure.10.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {$\{12,13,14,15,17,18,20\}$}}}{103}{subfigure.10.4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {$\{22,24,25,30\}$ }}}{103}{subfigure.10.5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces { $\{21,23,26,27,28,29\}$}}}{103}{subfigure.10.6}}
 \citation{Thurley_2014}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Effects of altering \ce {Ca^2+} spike times on features}{102}{subsection.6.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.11}{\ignorespaces Fura-2 fluorescence intensity traces of two HEK293 cells stimulated with $50\mu \mathrm  {M}$ carbachol, kindly provided by M. Falcke. Changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$).\relax }}{103}{figure.caption.36}}
-\newlabel{fig:tracetrend}{{6.11}{103}{Fura-2 fluorescence intensity traces of two HEK293 cells stimulated with $50\mu \mathrm {M}$ carbachol, kindly provided by M. Falcke. Changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$).\relax }{figure.caption.36}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{103}{subfigure.11.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{103}{subfigure.11.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.12}{\ignorespaces Example of removing the trend from ISIs, where the ISIs with trends are shown by black dots and the ISIs with linear trends removed are red. The solid lines show the linear trends in the respective ISIs. \relax }}{104}{figure.caption.37}}
-\newlabel{fig:RmTrend}{{6.12}{104}{Example of removing the trend from ISIs, where the ISIs with trends are shown by black dots and the ISIs with linear trends removed are red. The solid lines show the linear trends in the respective ISIs. \relax }{figure.caption.37}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.13}{\ignorespaces Posterior mean (solid line) and 95\% confidence interval (shaded) for two cells, where red corresponds to fitting without removing linear trends and black with removing linear trends.\relax }}{105}{figure.caption.38}}
-\newlabel{fig:Trends}{{6.13}{105}{Posterior mean (solid line) and 95\% confidence interval (shaded) for two cells, where red corresponds to fitting without removing linear trends and black with removing linear trends.\relax }{figure.caption.38}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{105}{subfigure.13.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{105}{subfigure.13.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Constant stimulus experiments}{105}{subsection.6.4.2}}
-\newlabel{table:Haar}{{\caption@xref {table:Haar}{ on input line 496}}{106}{Effects of altering \ce {Ca^2+} spike times on features}{table.caption.39}{}}
-\newlabel{table:feat_with/out_trend}{{\caption@xref {table:feat_with/out_trend}{ on input line 509}}{106}{Effects of altering \ce {Ca^2+} spike times on features}{table.caption.39}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.5}{\ignorespaces Features of intensity functions generated from the same cell, shown in Figure \ref  {fig:Trends}. Raw and no trend corresponds to fitting the intensity function from the original \ce {Ca^2+} spike sequence and the spike sequence with linear trends removed respectively. \relax }}{106}{table.caption.39}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.14}{\ignorespaces The posterior intensity functions obtained from the constant stimulus experiment.\relax }}{107}{figure.caption.40}}
-\newlabel{fig:Colin2_fns}{{6.14}{107}{The posterior intensity functions obtained from the constant stimulus experiment.\relax }{figure.caption.40}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.15}{\ignorespaces Matrix containing the extracted features for the constant stimulus experiment \relax }}{108}{figure.caption.41}}
-\newlabel{fig:Colin2_features}{{6.15}{108}{Matrix containing the extracted features for the constant stimulus experiment \relax }{figure.caption.41}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.16}{\ignorespaces Matrix containing the magnitudes of the features for the constant stimulus experiment.\relax }}{109}{figure.caption.42}}
-\newlabel{fig:Colin2_sizes}{{6.16}{109}{Matrix containing the magnitudes of the features for the constant stimulus experiment.\relax }{figure.caption.42}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.17}{\ignorespaces Histogram of the magnitudes of all the features found from the intensity functions inferred from the constant stimulus experiments.\relax }}{110}{figure.caption.43}}
-\newlabel{fig:Colin2_hist}{{6.17}{110}{Histogram of the magnitudes of all the features found from the intensity functions inferred from the constant stimulus experiments.\relax }{figure.caption.43}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Step change experiments}{112}{subsection.6.4.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.18}{\ignorespaces Clusters of the intensity functions inferred from a constant stiulus experiment. (A) and (B) corresponds to clusters with and without bumps respectively. Whereas, (C) and (D) corresponds to clustering on functions that do and do not rebound after the initial decrease in intensity respectively. \relax }}{112}{figure.caption.44}}
-\newlabel{fig:Colin2_Clus}{{6.18}{112}{Clusters of the intensity functions inferred from a constant stiulus experiment. (A) and (B) corresponds to clusters with and without bumps respectively. Whereas, (C) and (D) corresponds to clustering on functions that do and do not rebound after the initial decrease in intensity respectively. \relax }{figure.caption.44}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{112}{subfigure.18.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{112}{subfigure.18.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{112}{subfigure.18.3}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {}}}{112}{subfigure.18.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.19}{\ignorespaces (A) shows the intensity functions inferred from the step change experiment. (B) shows the extracted features of each function and (C) the feature's magnitude. The functions in (A) are coloured corresponding to the row that describes their features in (B) and (C).\relax }}{114}{figure.caption.45}}
-\newlabel{fig:Martin4}{{6.19}{114}{(A) shows the intensity functions inferred from the step change experiment. (B) shows the extracted features of each function and (C) the feature's magnitude. The functions in (A) are coloured corresponding to the row that describes their features in (B) and (C).\relax }{figure.caption.45}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{114}{subfigure.19.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{114}{subfigure.19.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{114}{subfigure.19.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.20}{\ignorespaces Clusters of the intensity functions obtained from a step change experiment. We cluster into 3 groups; (A) functions with a large bump, (B) functions that have a decrease after the bump in $[3000,4000]$ and (C) those that do not have a decrease afterwards.\relax }}{115}{figure.caption.46}}
-\newlabel{fig:Martin4_Clus}{{6.20}{115}{Clusters of the intensity functions obtained from a step change experiment. We cluster into 3 groups; (A) functions with a large bump, (B) functions that have a decrease after the bump in $[3000,4000]$ and (C) those that do not have a decrease afterwards.\relax }{figure.caption.46}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{115}{subfigure.20.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{115}{subfigure.20.2}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{115}{subfigure.20.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Summary}{116}{section.6.5}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusion}{119}{chapter.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Effects of altering \ce {Ca^2+} spike times on features}{104}{subsection.6.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.11}{\ignorespaces Fura-2 fluorescence intensity traces of two HEK293 cells stimulated with $50\mu \mathrm  {M}$ carbachol, kindly provided by M. Falcke. Changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$).\relax }}{105}{figure.caption.40}}
+\newlabel{fig:tracetrend}{{6.11}{105}{Fura-2 fluorescence intensity traces of two HEK293 cells stimulated with $50\mu \mathrm {M}$ carbachol, kindly provided by M. Falcke. Changes in the fluorescence of the \ce {Ca^2+} indicator is recored relative to its basal level ($\Delta F$).\relax }{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{105}{subfigure.11.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{105}{subfigure.11.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.12}{\ignorespaces Example of removing the trend from ISIs, where the ISIs with trends are shown by black dots and the ISIs with linear trends removed are red. The solid lines show the linear trends in the respective ISIs. \relax }}{106}{figure.caption.41}}
+\newlabel{fig:RmTrend}{{6.12}{106}{Example of removing the trend from ISIs, where the ISIs with trends are shown by black dots and the ISIs with linear trends removed are red. The solid lines show the linear trends in the respective ISIs. \relax }{figure.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.13}{\ignorespaces Posterior mean (solid line) and 95\% confidence interval (shaded) for two cells, where red corresponds to fitting without removing linear trends and black with removing linear trends.\relax }}{107}{figure.caption.42}}
+\newlabel{fig:Trends}{{6.13}{107}{Posterior mean (solid line) and 95\% confidence interval (shaded) for two cells, where red corresponds to fitting without removing linear trends and black with removing linear trends.\relax }{figure.caption.42}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{107}{subfigure.13.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{107}{subfigure.13.2}}
+\newlabel{table:Haar}{{\caption@xref {table:Haar}{ on input line 496}}{107}{Effects of altering \ce {Ca^2+} spike times on features}{table.caption.43}{}}
+\newlabel{table:feat_with/out_trend}{{\caption@xref {table:feat_with/out_trend}{ on input line 509}}{107}{Effects of altering \ce {Ca^2+} spike times on features}{table.caption.43}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.5}{\ignorespaces Features of intensity functions generated from the same cell, shown in Figure \ref  {fig:Trends}. Raw and no trend corresponds to fitting the intensity function from the original \ce {Ca^2+} spike sequence and the spike sequence with linear trends removed respectively. \relax }}{107}{table.caption.43}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Constant stimulus experiments}{108}{subsection.6.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.14}{\ignorespaces The posterior intensity functions obtained from the constant stimulus experiment.\relax }}{109}{figure.caption.44}}
+\newlabel{fig:Colin2_fns}{{6.14}{109}{The posterior intensity functions obtained from the constant stimulus experiment.\relax }{figure.caption.44}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.15}{\ignorespaces Matrix containing the extracted features for the constant stimulus experiment \relax }}{110}{figure.caption.45}}
+\newlabel{fig:Colin2_features}{{6.15}{110}{Matrix containing the extracted features for the constant stimulus experiment \relax }{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.16}{\ignorespaces Matrix containing the magnitudes of the features for the constant stimulus experiment.\relax }}{111}{figure.caption.46}}
+\newlabel{fig:Colin2_sizes}{{6.16}{111}{Matrix containing the magnitudes of the features for the constant stimulus experiment.\relax }{figure.caption.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.17}{\ignorespaces Histogram of the magnitudes of all the features found from the intensity functions inferred from the constant stimulus experiments.\relax }}{112}{figure.caption.47}}
+\newlabel{fig:Colin2_hist}{{6.17}{112}{Histogram of the magnitudes of all the features found from the intensity functions inferred from the constant stimulus experiments.\relax }{figure.caption.47}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Step change experiments}{114}{subsection.6.4.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.18}{\ignorespaces Clusters of the intensity functions inferred from a constant stiulus experiment. (A) and (B) corresponds to clusters with and without bumps respectively. Whereas, (C) and (D) corresponds to clustering on functions that do and do not rebound after the initial decrease in intensity respectively. \relax }}{114}{figure.caption.48}}
+\newlabel{fig:Colin2_Clus}{{6.18}{114}{Clusters of the intensity functions inferred from a constant stiulus experiment. (A) and (B) corresponds to clusters with and without bumps respectively. Whereas, (C) and (D) corresponds to clustering on functions that do and do not rebound after the initial decrease in intensity respectively. \relax }{figure.caption.48}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{114}{subfigure.18.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{114}{subfigure.18.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{114}{subfigure.18.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {}}}{114}{subfigure.18.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.19}{\ignorespaces (A) shows the intensity functions inferred from the step change experiment. (B) shows the extracted features of each function and (C) the feature's magnitude. The functions in (A) are coloured corresponding to the row that describes their features in (B) and (C).\relax }}{116}{figure.caption.49}}
+\newlabel{fig:Martin4}{{6.19}{116}{(A) shows the intensity functions inferred from the step change experiment. (B) shows the extracted features of each function and (C) the feature's magnitude. The functions in (A) are coloured corresponding to the row that describes their features in (B) and (C).\relax }{figure.caption.49}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{116}{subfigure.19.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{116}{subfigure.19.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{116}{subfigure.19.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.20}{\ignorespaces Clusters of the intensity functions obtained from a step change experiment. We cluster into 3 groups; (A) functions with a large bump, (B) functions that have a decrease after the bump in $[3000,4000]$ and (C) those that do not have a decrease afterwards.\relax }}{117}{figure.caption.50}}
+\newlabel{fig:Martin4_Clus}{{6.20}{117}{Clusters of the intensity functions obtained from a step change experiment. We cluster into 3 groups; (A) functions with a large bump, (B) functions that have a decrease after the bump in $[3000,4000]$ and (C) those that do not have a decrease afterwards.\relax }{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{117}{subfigure.20.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{117}{subfigure.20.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{117}{subfigure.20.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Summary}{118}{section.6.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusion}{121}{chapter.7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chapter 7}{{7}{119}{Conclusion}{chapter.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.0.1}Web application for simulating spikes}{119}{subsection.7.0.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.0.1.1}Example of using the app}{120}{subsubsection.7.0.1.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Examples of generated spike sequences using {SimSpikes}. \relax }}{121}{figure.caption.47}}
-\newlabel{fig: SimSpikes example}{{7.1}{121}{Examples of generated spike sequences using {SimSpikes}. \relax }{figure.caption.47}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{121}{subfigure.1.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{121}{subfigure.1.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }}{122}{figure.caption.48}}
-\newlabel{fig: SimSpikes Download}{{7.2}{122}{Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }{figure.caption.48}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{122}{subfigure.2.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{122}{subfigure.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.0.2}Web application for viewing/analysing raw data}{122}{subsection.7.0.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.0.2.1}Example of using the app}{123}{subsubsection.7.0.2.1}}
+\newlabel{chapter 7}{{7}{121}{Conclusion}{chapter.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.0.1}Web application for simulating spikes}{121}{subsection.7.0.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.0.1.1}Example of using the app}{122}{subsubsection.7.0.1.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Examples of generated spike sequences using {SimSpikes}. \relax }}{123}{figure.caption.51}}
+\newlabel{fig: SimSpikes example}{{7.1}{123}{Examples of generated spike sequences using {SimSpikes}. \relax }{figure.caption.51}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{123}{subfigure.1.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{123}{subfigure.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }}{124}{figure.caption.52}}
+\newlabel{fig: SimSpikes Download}{{7.2}{124}{Images of the files downloaded from the step change intensity function {SimSpikes}. \relax }{figure.caption.52}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{124}{subfigure.2.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{124}{subfigure.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.0.2}Web application for viewing/analysing raw data}{124}{subsection.7.0.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.0.2.1}Example of using the app}{125}{subsubsection.7.0.2.1}}
 \citation{fig: ViewData}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Print-screen of main pain of ViewData app where the threshold input has been updated to be $0.7$. \relax }}{124}{figure.caption.49}}
-\newlabel{fig: ViewData}{{7.3}{124}{Print-screen of main pain of ViewData app where the threshold input has been updated to be $0.7$. \relax }{figure.caption.49}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Print screen of App where threshold has been updated to `0.7,0.45,0.7,800,1000'.\relax }}{125}{figure.caption.50}}
-\newlabel{fig: ViewData2}{{7.4}{125}{Print screen of App where threshold has been updated to `0.7,0.45,0.7,800,1000'.\relax }{figure.caption.50}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.5}{\ignorespaces Main Panel where we remove two transient regions. The first region between 0s and 200s. The second interval is between 3300s and 3500s.\relax }}{126}{figure.caption.51}}
-\newlabel{fig: ViewData3}{{7.5}{126}{Main Panel where we remove two transient regions. The first region between 0s and 200s. The second interval is between 3300s and 3500s.\relax }{figure.caption.51}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Print-screen of main pain of ViewData app where the threshold input has been updated to be $0.7$. \relax }}{126}{figure.caption.53}}
+\newlabel{fig: ViewData}{{7.3}{126}{Print-screen of main pain of ViewData app where the threshold input has been updated to be $0.7$. \relax }{figure.caption.53}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Print screen of App where threshold has been updated to `0.7,0.45,0.7,800,1000'.\relax }}{127}{figure.caption.54}}
+\newlabel{fig: ViewData2}{{7.4}{127}{Print screen of App where threshold has been updated to `0.7,0.45,0.7,800,1000'.\relax }{figure.caption.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.5}{\ignorespaces Main Panel where we remove two transient regions. The first region between 0s and 200s. The second interval is between 3300s and 3500s.\relax }}{128}{figure.caption.55}}
+\newlabel{fig: ViewData3}{{7.5}{128}{Main Panel where we remove two transient regions. The first region between 0s and 200s. The second interval is between 3300s and 3500s.\relax }{figure.caption.55}{}}
 \bibstyle{apalike}
 \bibdata{bibliography}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.6}{\ignorespaces Main panel where linear trends are removed.\relax }}{127}{figure.caption.52}}
-\newlabel{fig: ViewData4}{{7.6}{127}{Main panel where linear trends are removed.\relax }{figure.caption.52}{}}
-\bibcite{Nugget}{{1}{2010}{{A}}{{}}}
-\bibcite{Skupin}{{2}{2011}{{A et~al.}}{{}}}
-\bibcite{AGNE:1}{{3}{t 17}{{A et~al.}}{{}}}
-\bibcite{rasmussen2004}{{4}{2006}{{C and C}}{{}}}
-\bibcite{PP2}{{5}{2008}{{Daley and Vere-Jones}}{{}}}
-\bibcite{Denninger_2014}{{6}{2014}{{Denninger et~al.}}{{}}}
-\bibcite{PP}{{7}{2003}{{DJ and D}}{{}}}
-\bibcite{Martingale}{{8}{1994}{{E and D}}{{}}}
-\bibcite{rescale}{{9}{2002}{{EN et~al.}}{{}}}
-\bibcite{Gibbs}{{10}{1992}{{G and E}}{{}}}
-\bibcite{Cunningham2008}{{11}{2008}{{JP et~al.}}{{}}}
-\bibcite{Thurley_2011}{{12}{2011}{{K et~al.}}{{}}}
-\bibcite{Thurley_2014}{{13}{2014}{{K et~al.}}{{}}}
-\bibcite{InvTrans}{{14}{2013}{{L}}{{}}}
-\bibcite{KS}{{15}{1968}{{MB and R}}{{}}}
-\bibcite{RJMCMC}{{16}{1995}{{PJ}}{{}}}
-\bibcite{IntFn}{{17}{2001}{{R et~al.}}{{}}}
-\bibcite{NEAL}{{18}{1999}{{RM}}{{}}}
-\bibcite{Hastings}{{19}{1995}{{S and E}}{{}}}
-\bibcite{Santella_2004}{{20}{2004}{{Santella et~al.}}{{}}}
-\bibcite{VanNhieu_2003}{{21}{2003}{{Van~Nhieu et~al.}}{{}}}
-\bibcite{Truccolo_2005}{{22}{2005}{{W et~al.}}{{}}}
-\bibcite{Whitaker_2006}{{23}{2006}{{Whitaker}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.6}{\ignorespaces Main panel where linear trends are removed.\relax }}{129}{figure.caption.56}}
+\newlabel{fig: ViewData4}{{7.6}{129}{Main panel where linear trends are removed.\relax }{figure.caption.56}{}}
